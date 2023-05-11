@@ -6,7 +6,3 @@ X
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-J
-src/main/PerkStatsDTO.java,3\5\35fcaf682926a7768e997ac87eb4aa18e851cd47
-F
-src/main/PerksDTO.java,c\0\c0c45f8a58c48cf88abe2b8d2a268d38696e30a5

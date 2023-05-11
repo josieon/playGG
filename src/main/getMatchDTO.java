@@ -7,8 +7,7 @@ import java.util.*;
 import java.util.logging.*;
 
 public class getMatchDTO {
-    public static void getMatchDto(String matchId) throws Exception {
-        String apiKey = "RGAPI-0d5b7bbd-9366-4a3a-b724-ec34028801a4";
+    public static void getMatchDto(String matchId, String apiKey) throws Exception {
         String apiUrl = "https://asia.api.riotgames.com/lol/match/v5/matches/" + matchId + "?api_key=" + apiKey;
         System.out.println(apiUrl);
 

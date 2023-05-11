@@ -9,16 +9,24 @@ import static java.lang.Thread.sleep;
 
 public class batch {
     public static void main(String[] args) throws Exception {
-        long num = 6300034194L;
+        long num = 6300098993L;
 //        String matchId = "KR_" + (num);
 
-        for (int i = 1; ; i++) {
-            if(i % 50 == 0) {  // 50번 request마다 1분 정지
-                sleep(60000);
-            }
-            String matchId = "KR_" + (num + i);
+        for (int i = 1; ;) {
 //            System.out.println(matchId);
-            getMatchDTO.getMatchDto(matchId);
+            for(int j = 0; j < 50;i++, j++) {
+                String matchId = "KR_" + (num + i);
+                getMatchDTO.getMatchDto(matchId, "RGAPI-58f34acb-d75d-4d57-ae97-f6f5fb125fb6");
+            }
+            for(int j = 0; j < 50;i++, j++) {
+                String matchId = "KR_" + (num + i);
+                getMatchDTO.getMatchDto(matchId, "RGAPI-82c25212-ef4f-41c6-9725-aafb3f47d070");
+            }
+            for(int j = 0; j < 50;i++, j++) {
+                String matchId = "KR_" + (num + i);
+                getMatchDTO.getMatchDto(matchId, "RGAPI-be0039aa-75df-496a-818a-43e9fbfea52d");
+            }
+            sleep(60000);
         }
 //        Logger logger = Logger.getLogger("mylogger");
 //        String log = "log.log";
