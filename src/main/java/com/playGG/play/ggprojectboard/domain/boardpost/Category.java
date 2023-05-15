@@ -1,5 +1,6 @@
 package com.playGG.play.ggprojectboard.domain.boardpost;
 
+import com.playGG.play.ggprojectboard.domain.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "category") //테이블 명 지정
-public class Category {
+public class Category extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;

@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class BoardPostResponseDto {
     private Long postId; //PK
     private String title;  //제목
-    private String createdAt; //생성일자 , auditing 엔티티로 대체
-    private String updatedAt; //수정일자, auditing 엔티티로 대체
+//    private String createdAt; //생성일자 , auditing 엔티티로 대체
+//    private String updatedAt; //수정일자, auditing 엔티티로 대체
     private Integer viewCount; //조회수
     private Integer commentCount;  // 댓글수
     private Integer likes; // 좋아요수
@@ -22,8 +22,6 @@ public class BoardPostResponseDto {
     public BoardPostResponseDto(BoardPost responseEntity) {
         this.postId = responseEntity.getPostId();
         this.title = responseEntity.getTitle();
-        this.createdAt = responseEntity.getCreatedAt();
-        this.updatedAt = responseEntity.getUpdatedAt();
         this.viewCount = responseEntity.getViewCount();
         this.commentCount = responseEntity.getCommentCount();
         this.likes = responseEntity.getLikes();

@@ -1,5 +1,6 @@
 package com.playGG.play.ggprojectboard.domain.boardpost;
 
+import com.playGG.play.ggprojectboard.domain.AuditingEntity;
 import com.playGG.play.ggprojectboard.domain.user.Users;
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +9,7 @@ import lombok.*;
 @Getter
 @Entity
 @Table(name = "comments") //테이블 명 지정
-public class Comments {
+public class Comments extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
@@ -21,12 +22,6 @@ public class Comments {
 
     @Column(nullable = false, columnDefinition = "integer default 0")
     private Integer dislike; // 싫어요수
-
-    @Column(nullable = false)
-    private String createdAt; //생성일자
-
-    @Column(nullable = false)
-    private String updatedAt; //수정일자
 
     @ManyToOne
     @JoinColumn(name="post_id")
@@ -46,13 +41,11 @@ public class Comments {
 
     @Builder
     public Comments(String contents, Integer likes, Integer dislike,
-                    String createdAt, String updatedAt, BoardPost boardPost,
-                    Users users, Images imageComment, Reply reply) {
+                    BoardPost boardPost, Users users,
+                    Images imageComment, Reply reply) {
         this.contents = contents;
         this.likes = likes;
         this.dislike = dislike;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
         this.boardPost = boardPost;
         this.users = users;
         this.imageComment = imageComment;

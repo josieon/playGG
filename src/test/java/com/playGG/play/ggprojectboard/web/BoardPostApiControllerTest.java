@@ -4,7 +4,6 @@ import com.playGG.play.ggprojectboard.domain.boardpost.BoardPost;
 import com.playGG.play.ggprojectboard.domain.boardpost.BoardPostRepository;
 import com.playGG.play.ggprojectboard.web.dto.BoardPostSaveRequestDto;
 import com.playGG.play.ggprojectboard.web.dto.BoardPostUpdateRequestDto;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -47,8 +46,6 @@ class BoardPostApiControllerTest {
         //given
         String title = "이것은 테스트";  //제목
 
-        String createdAt = "230514"; //생성일자 , auditing 엔티티로 대체
-
         Integer viewCount = 1; //조회수
 
         Integer commentCount = 1;  // 댓글수
@@ -65,7 +62,6 @@ class BoardPostApiControllerTest {
 
         BoardPostSaveRequestDto requestDto = BoardPostSaveRequestDto.builder()
                 .title(title)
-                .createdAt(createdAt)
                 .viewCount(viewCount)
                 .commentCount(commentCount)
                 .likes(likes)
@@ -87,7 +83,6 @@ class BoardPostApiControllerTest {
 
         List<BoardPost> all = boardPostRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(title);
-        assertThat(all.get(0).getCreatedAt()).isEqualTo(createdAt);
         assertThat(all.get(0).getViewCount()).isEqualTo(viewCount);
         assertThat(all.get(0).getCommentCount()).isEqualTo(commentCount);
         assertThat(all.get(0).getLikes()).isEqualTo(likes);
@@ -103,7 +98,6 @@ class BoardPostApiControllerTest {
         // given
         BoardPost savePost = boardPostRepository.save(BoardPost.builder() //데이터 1건 삽입
                         .title("Board")
-                        .createdAt("createdAt")
                         .viewCount(0)
                         .commentCount(0)
                         .likes(0)

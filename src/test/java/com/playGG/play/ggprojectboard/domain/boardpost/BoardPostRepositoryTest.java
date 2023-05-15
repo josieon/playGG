@@ -1,11 +1,14 @@
 package com.playGG.play.ggprojectboard.domain.boardpost;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,9 +28,9 @@ class BoardPostRepositoryTest {
         //given
         String title = "테스트 게시글";  //제목
 
-        String createdAt = "오늘 생성"; //생성일자 , auditing 엔티티로 대체
-
-        String updatedAt = "오늘 삭제 예정"; //수정일자, auditing 엔티티로 대체
+//        String createdAt = "오늘 생성"; //생성일자 , auditing 엔티티로 대체
+//
+//        String updatedAt = "오늘 삭제 예정"; //수정일자, auditing 엔티티로 대체
 
         Integer viewCount = 1; //조회수
 
@@ -45,8 +48,6 @@ class BoardPostRepositoryTest {
 
         boardPostRepository.save(BoardPost.builder()
                 .title(title)
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
                 .viewCount(viewCount)
                 .commentCount(commentCount)
                 .likes(likes)
@@ -62,8 +63,6 @@ class BoardPostRepositoryTest {
 
         //then
         assertEquals(boardPost.getTitle(), title);
-        assertEquals(boardPost.getCreatedAt(), createdAt);
-        assertEquals(boardPost.getUpdatedAt(), updatedAt);
         assertEquals(boardPost.getViewCount(), viewCount);
         assertEquals(boardPost.getCommentCount(), commentCount);
         assertEquals(boardPost.getLikes(), likes);
@@ -73,4 +72,30 @@ class BoardPostRepositoryTest {
         assertEquals(boardPost.getVideoUrl(), videoUrl);
     }
 
+    @Test //auditing 테스트
+    public void auditingEntity(){
+        //given
+
+        LocalDateTime now = LocalDateTime.now();
+
+        boardPostRepository.save(BoardPost.builder()
+                .title("Board")
+                .viewCount(0)
+                .commentCount(0)
+                .likes(0)
+                .dislike(0)
+                .contents("contents")
+                .shareCount(0)
+                .videoUrl("videoUrl")
+                .build()
+        );
+
+        //when
+        BoardPost boardPost = boardPostRepository.findAll().get(0);
+
+        //then : 생성일시, 수정일시가 데이터 삽입 직전보다 나중이어야 함
+        assertTrue(boardPost.getCreatedAt().isAfter(now));
+        assertTrue(boardPost.getUpdatedAt().isAfter(now));
+
+    }
 }

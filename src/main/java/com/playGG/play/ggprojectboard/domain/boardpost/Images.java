@@ -1,5 +1,6 @@
 package com.playGG.play.ggprojectboard.domain.boardpost;
 
+import com.playGG.play.ggprojectboard.domain.AuditingEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +10,7 @@ import lombok.*;
 @Getter
 @Entity
 @Table(name = "images") //테이블 명 지정
-public class Images {
+public class Images extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long imageId;

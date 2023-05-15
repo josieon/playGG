@@ -1,4 +1,5 @@
 package com.playGG.play.ggprojectboard.domain.boardpost;
+import com.playGG.play.ggprojectboard.domain.AuditingEntity;
 import com.playGG.play.ggprojectboard.domain.user.Users;
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,7 +8,7 @@ import lombok.*;
 @Getter
 @Entity
 @Table(name = "reply") //테이블 명 지정
-public class Reply {
+public class Reply extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyId;
@@ -20,12 +21,6 @@ public class Reply {
 
     @Column(nullable = false, columnDefinition = "integer default 0")
     private Integer dislike; // 싫어요수
-
-    @Column(nullable = false)
-    private String createdAt; //생성일자
-
-    @Column(nullable = false)
-    private String updatedAt; //수정일자
 
     @ManyToOne
     @JoinColumn(name="user_id")
@@ -40,14 +35,12 @@ public class Reply {
 
     @Builder
 
-    public Reply(String contents, Integer likes, Integer dislike,
-                 String createdAt, String updatedAt, Users users,
+    public Reply(String contents, Integer likes,
+                 Integer dislike, Users users,
                  Images imageReply, Comments comments) {
         this.contents = contents;
         this.likes = likes;
         this.dislike = dislike;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
         this.users = users;
         this.imageReply = imageReply;
         this.comments = comments;
