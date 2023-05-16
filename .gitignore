@@ -1,5 +1,7 @@
 .log
 .txt
+log.log
+src/API_KEY.txt
 
 ### IntelliJ IDEA ###
 out/
