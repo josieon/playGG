@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
 @Service
 public class BoardPostService {
@@ -41,4 +44,17 @@ public class BoardPostService {
         return new BoardPostResponseDto(responseEntity);
     }
 
+
+    @Transactional(readOnly = true) // 수정, 쓰기 발생 예방 및 읽기 전용을 통한 성능향상
+    public List<BoardPostResponseDto> findAllDesc() {
+        return boardPostRepository.findAllDesc().stream()
+                .map(BoardPostResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    public void delete(Long postId) {
+        BoardPost post = boardPostRepository.findById(postId)
+                .orElseThrow(() -> new IllegalStateException("해당 게시글이 없습니다. id=" + postId));
+        boardPostRepository.delete(post);
+    }
 }

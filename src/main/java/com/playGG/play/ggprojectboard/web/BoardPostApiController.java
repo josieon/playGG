@@ -30,5 +30,13 @@ public class BoardPostApiController {
     public BoardPostResponseDto findPostById(@PathVariable Long postId){
         return boardPostService.findPostById(postId);
     }
+
+    //삭제
+    @DeleteMapping("/api/v1/board-post/{postId}")
+    public Long delete(@PathVariable Long postId){
+        boardPostService.delete(postId);
+        return postId;
+    }
+
 }
 

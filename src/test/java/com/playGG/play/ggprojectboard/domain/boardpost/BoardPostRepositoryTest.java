@@ -2,6 +2,7 @@ package com.playGG.play.ggprojectboard.domain.boardpost;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,7 @@ class BoardPostRepositoryTest {
     }
 
     @Test //auditing 테스트
+    @DisplayName("AuditingEntity 테스트")
     public void auditingEntity(){
         //given
 

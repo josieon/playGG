@@ -4,11 +4,13 @@ import com.playGG.play.ggprojectboard.domain.AuditingEntity;
 import com.playGG.play.ggprojectboard.domain.user.Users;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@DynamicInsert
 //@Builder //lombok 빌더 패턴 구현, PK와 충돌 방지, PK가 있는데 클래스 위에 사용해도 되는지?
 //@AllArgsConstructor //Builder 사용을 위한 모든 매개변수 갖는 생성자 생성
 @NoArgsConstructor //매개변수가 없는 기본 생성자 자동 생성
@@ -29,22 +31,27 @@ public class BoardPost extends AuditingEntity { //AuditingEntity을 통한 일�
 //    @Column
 //    private String updatedAt; //수정일자, auditing 엔티티로 대체
 
-    @Column(nullable = false, columnDefinition = "integer default 0") //default 0
+    @Column(nullable = false)
+    @ColumnDefault("0")//default 0
     private Integer viewCount; //조회수
 
-    @Column(nullable = false, columnDefinition = "integer default 0")
+    @Column(nullable = false)
+    @ColumnDefault("0")
     private Integer commentCount;  // 댓글수
 
-    @Column(nullable = false, columnDefinition = "integer default 0")
+    @Column(nullable = false)
+    @ColumnDefault("0")
     private Integer likes; // 좋아요수
 
-    @Column(nullable = false, columnDefinition = "integer default 0")
+    @Column(nullable = false)
+    @ColumnDefault("0")
     private Integer dislike; // 싫어요수
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "LONGTEXT") //이미지를 base64로 받기 위한 LONGTEXT 지정
     private String contents; // 게시글 내용
 
-    @Column(nullable = false, columnDefinition = "integer default 0")
+    @Column(nullable = false)
+    @ColumnDefault("0")
     private Integer shareCount; //공유버튼 클릭수 카운트
 
     @Column(columnDefinition = "TEXT") //NULL 허용

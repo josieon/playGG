@@ -1,0 +1,30 @@
+{{>layout/header}}
+<div class="container">
+    <h1>게시글 수정</h1>
+    <br>
+    <!--    <div class="col-md-4">-->
+    <form>
+        <div>
+            <input type="hidden" id="postId" value="{{posts.postId}}">
+        </div>
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요(최대 30자)" value="{{posts.title}}">
+        </div>
+        <div class="form-group">
+            <label for="videoUrl">동영상 URL</label>
+            <Input type="text" class="form-control" id="videoUrl" name="videoUrl" placeholder="(선택) ex.https://www.playGG.com" value="{{posts.videoUrl}}">
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea id="summernote" name="contents">{{posts.contents}}</textarea>
+        </div>
+        <div class="form-group">
+            <a href="/community" role="button" class="btn btn-secondary">취소</a>
+            <button id="btn-update" class="btn btn-primary" type="button">수정</button>
+            <button id="btn-delete" class="btn btn-danger" type="button">삭제</button>
+        </div>
+    </form>
+</div>
+<!--</div>-->
+{{>layout/footer}}

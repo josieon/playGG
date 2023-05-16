@@ -35,12 +35,12 @@ public class BoardPostSaveRequestDto { //HTTP Request Body로 보내는 값(JSON
     public BoardPost toEntity() {     //BoardPostSaveRequestDto 객체를 BoardPost 엔티티로 변환
         return BoardPost.builder() // 빌더를 사용하여 BoardPost 객체의 각 필드에는 BoardPostSaveRequestDto 객체의 해당 필드 값을 설정
                 .title(title)
-                .viewCount(viewCount)
-                .commentCount(commentCount)
-                .likes(likes)
-                .dislike(dislike)
+                .viewCount(viewCount==null?0:viewCount) // null로 잡히는 현상 대응
+                .commentCount(commentCount==null?0:commentCount)
+                .likes(likes==null?0:likes)
+                .dislike(dislike==null?0:dislike)
                 .contents(contents)
-                .shareCount(shareCount)
+                .shareCount(shareCount==null?0:shareCount)
                 .videoUrl(videoUrl)
                 .build(); //.build() 메서드를 호출하여 BoardPost 객체를 최종적으로 생성
     }
