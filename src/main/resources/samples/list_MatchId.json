@@ -1,0 +1,25 @@
+{
+    "REQUEST_URL": "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/LM2IgLLy8Avnz2F-rIZAGiMdR7EQc11nf8xdRtgpxwlUWpX66Ci6SBKtspHHVdf5Ug1Nws147Q-h_A/ids?start=0&count=20&api_key=RGAPI-2f125d58-0a43-4799-b65e-8fd62cd47769",
+    "RESPONSE_BODY": [
+        "KR_6478591086",
+        "KR_6478550592",
+        "KR_6478502424",
+        "KR_6478446067",
+        "KR_6477307825",
+        "KR_6477287801",
+        "KR_6477262770",
+        "KR_6477241207",
+        "KR_6477185006",
+        "KR_6476454641",
+        "KR_6476436235",
+        "KR_6476062948",
+        "KR_6476032088",
+        "KR_6475983635",
+        "KR_6475934659",
+        "KR_6475532958",
+        "KR_6475085986",
+        "KR_6475036765",
+        "KR_6474979839",
+        "KR_6474950411"
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "REQUEST_URL": "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/T4gM_VvyMERIineJmaTbrGOC0tcrPJmzn99v61PUKpH2kg?api_key=RGAPI-2f125d58-0a43-4799-b65e-8fd62cd47769",
+    "RESPONSE_BODY": [
+        {
+            "leagueId": "446781dd-2147-3d8a-be18-f9a4f27e87bd",
+            "queueType": "RANKED_SOLO_5x5",
+            "tier": "GRANDMASTER",
+            "rank": "I",
+            "summonerId": "T4gM_VvyMERIineJmaTbrGOC0tcrPJmzn99v61PUKpH2kg",
+            "summonerName": "Hide on bush",
+            "leaguePoints": 881,
+            "wins": 272,
+            "losses": 243,
+            "veteran": false,
+            "inactive": false,
+            "freshBlood": true,
+            "hotStreak": true
+        }
+    ]
+}

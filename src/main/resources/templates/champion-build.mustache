@@ -1,0 +1,25 @@
+{{>layout/header}}
+<div class="container">
+    <h1>빌드</h1>
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <form action="/api/v1/posts" method="post">
+                {{#champion}}
+                    <div class="form-group">
+                        <label for="title">챔피언 {{champName}}</label>
+                    </div>
+                    <div>
+                        <label for="title">승률 : {{winRate}}%</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">픽 횟수 : {{choices}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">밴 횟수 : {{bans}}</label>
+                    </div>
+                {{/champion}}
+            </form>
+        </div>
+    </div>
+</div>
+{{>layout/footer}}

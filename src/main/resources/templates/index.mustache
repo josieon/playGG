@@ -1,0 +1,30 @@
+{{>layout/header}}
+<h1>Document</h1>
+<div class="container">
+    <div class="col-md-12">
+        <!-- 게시글 리스트-->
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th class="col">챔피언</th>
+                <th class="col">승률</th>
+                <th class="col">픽 횟수</th>
+                <th class="col">밴 횟수</th>
+                <th class="col">상대하기 어려운 챔피언</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#champions}}
+                <tr>
+                    <td><a href="/champion/{{championId}}">{{champName}}</a></td>
+                    <td>{{winRate}}%</td>
+                    <td>{{choices}}</td>
+                    <td>{{bans}}</td>
+                    <td></td>
+                </tr>
+            {{/champions}}
+            </tbody>
+        </table>
+    </div>
+</div>
+{{>layout/footer}}

@@ -1,0 +1,12 @@
+{
+    "REQUEST_URL": "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/hide%20on%20bush?api_key=RGAPI-2f125d58-0a43-4799-b65e-8fd62cd47769",
+    "RESPONSE_BODY": {
+        "id": "T4gM_VvyMERIineJmaTbrGOC0tcrPJmzn99v61PUKpH2kg",
+        "accountId": "jjK_RFVbERZ8UKemf70BSuqmZBp_YfRHoILUD2T0IVeO",
+        "puuid": "LM2IgLLy8Avnz2F-rIZAGiMdR7EQc11nf8xdRtgpxwlUWpX66Ci6SBKtspHHVdf5Ug1Nws147Q-h_A",
+        "name": "Hide on bush",
+        "profileIconId": 6,
+        "revisionDate": 1683135466000,
+        "summonerLevel": 661
+    }
+}
