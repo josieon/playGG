@@ -2,6 +2,7 @@
 .txt
 log.log
 src/API_KEY.txt
+src/main/hidden
 
 ### IntelliJ IDEA ###
 out/
