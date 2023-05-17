@@ -100,8 +100,8 @@ public class test {
 //
 //        try {
 //            ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//            matchDTO match = objectMapper.readValue(buffer.toString(), matchDTO.class);
-//            pstmt = conn.prepareStatement("insert into matches (matchId, matchDTO) values (?, ?)");
+//            DTO.PerkStatsDTO.matchDTO match = objectMapper.readValue(buffer.toString(), DTO.PerkStatsDTO.matchDTO.class);
+//            pstmt = conn.prepareStatement("insert into matches (matchId, DTO.PerkStatsDTO.matchDTO) values (?, ?)");
 //            pstmt.setString(1, matchId);
 //            pstmt.setString(2, buffer.toString());
 //            pstmt = conn.prepareStatement(

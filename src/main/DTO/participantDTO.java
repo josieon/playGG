@@ -1,3 +1,5 @@
+package DTO;
+
 public class participantDTO {
 
 
@@ -6,7 +8,7 @@ public class participantDTO {
     int bountyLevel;
     int champExperience;
     int champLevel;
-    int championId;
+    public int championId;
     String championName;
     int championTransform;
     int consumablesPurchased;
@@ -26,17 +28,17 @@ public class participantDTO {
     boolean gameEndedInSurrender;
     int goldEarned;
     int goldSpent;
-    String individualPosition;
+    public String individualPosition;
     int inhibitorKills;
     int inhibitorTakedowns;
     int inhibitorLost;
-    int item0;
-    int item1;
-    int item2;
-    int item3;
-    int item4;
-    int item5;
-    int item6;
+    public int item0;
+    public int item1;
+    public int item2;
+    public int item3;
+    public int item4;
+    public int item5;
+    public int item6;
     int itemsPurchased;
     int killingSprees;
     int kills;
@@ -56,7 +58,7 @@ public class participantDTO {
     int objectivesStolenAssists;
     int participantId;
     int pentaKills;
-    PerksDTO perks;
+    public PerksDTO perks;
     int physicalDamageDealt;
     int physicalDamageDealtToChampions;
     int physicalDamageTaken;
@@ -72,14 +74,14 @@ public class participantDTO {
     int spell3Casts;
     int spell4Casts;
     int summoner1Casts;
-    int summoner1Id;
+    public int summoner1Id;
     int summoner2Casts;
-    int summoner2Id;
+    public int summoner2Id;
     String summonerId;
     int summonerLevel;
     String summonerName;
     boolean teamEarlySurrendered;
-    int teamId;
+    public int teamId;
     String teamPosition;
     int timeCCingOthers;
     int timePlayed;
@@ -105,7 +107,7 @@ public class participantDTO {
     int visionWardsBoughtInGame;
     int wardsKilled;
     int wardsPlaced;
-    boolean win;
+    public boolean win;
 
     public String getParticipant() {
         StringBuilder sb = new StringBuilder();
@@ -596,4 +598,5 @@ public class participantDTO {
     public boolean isWin() {
         return win;
     }
+
 }

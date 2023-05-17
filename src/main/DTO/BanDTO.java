@@ -1,5 +1,7 @@
+package DTO;
+
 public class BanDTO {
-    int championId;
+    public int championId;
     int pickTurn;
 
     public void setChampionId(int championId) {

@@ -1,6 +1,8 @@
+package DTO;
+
 public class matchDTO {
     metadataDTO metadata;
-    infoDTO info;
+    public infoDTO info;
 
     public infoDTO getInfo() {
         return info;

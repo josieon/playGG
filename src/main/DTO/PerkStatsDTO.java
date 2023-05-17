@@ -1,3 +1,7 @@
+package DTO;
+
+import java.util.*;
+
 public class PerkStatsDTO {
     int defense;
     int flex;

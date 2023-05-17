@@ -1,3 +1,5 @@
+package DTO;
+
 import com.fasterxml.jackson.databind.*;
 
 import java.io.*;
@@ -56,7 +58,7 @@ public class getMatchDTO {
             buffer = new StringBuilder();
             if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK){
                 bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
-//                matchDTO m = mapper.readValue(urlConnection.getInputStream(), matchDTO.class);
+//                DTO.PerkStatsDTO.matchDTO m = mapper.readValue(urlConnection.getInputStream(), DTO.PerkStatsDTO.matchDTO.class);
 //                buffer.append(m);
 //                buffer.append("GET SUCCESSFUL");
                 while((readLine = bufferedReader.readLine()) != null)

@@ -1,3 +1,5 @@
+package DTO;
+
 public class ObjectivesDTO {
     ObjectiveDTO baron;
     ObjectiveDTO champion;

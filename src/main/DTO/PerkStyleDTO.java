@@ -1,3 +1,7 @@
+package DTO;
+
+import DTO.*;
+
 import java.util.*;
 
 public class PerkStyleDTO {

@@ -1,10 +1,14 @@
+package DTO;
+
+import DTO.*;
+
 import java.util.*;
 
 public class teamDTO {
-    List<BanDTO> bans;
+    public List<BanDTO> bans;
     ObjectivesDTO objectives;
-    int teamId;
-    boolean win;
+    public int teamId;
+    public boolean win;
     public String getTeam() {
         StringBuilder sb = new StringBuilder();
         sb.append("{ \"bans\": \"");

@@ -1,21 +1,22 @@
-import java.text.*;
+package DTO;
+
 import java.util.*;
 
 public class infoDTO {
     long gameCreation;
     long gameDuration;
     long gameEndTimestamp;
-    long gameId;
+    public long gameId;
     String gameMode;
     String gameName;
     long gameStartTimestamp;
     String gameType;
     String gameVersion;
     int mapId;
-    List<participantDTO> participants;
+    public List<participantDTO> participants;
     String platformId;
-    int queueId;
-    List<teamDTO> teams;
+    public int queueId;
+    public List<teamDTO> teams;
     String tournamentCode;
 
     public String getGameDuration() {
@@ -23,9 +24,9 @@ public class infoDTO {
     }
 
     public Long getEndTimestamp() {
-//        Date date = new Date();
-//        date.setTime(gameEndTimestamp);
-//        return new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(date);
+        //        Date date = new Date();
+        //        date.setTime(gameEndTimestamp);
+        //        return new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(date);
         return gameEndTimestamp;
     }
 

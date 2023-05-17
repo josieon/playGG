@@ -1,3 +1,5 @@
+package DTO;
+
 public class PerkStyleSelectionDTO {
     int perk;
     int var1;
