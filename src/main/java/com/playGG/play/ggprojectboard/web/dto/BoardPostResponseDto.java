@@ -22,6 +22,8 @@ public class BoardPostResponseDto {
     private LocalDateTime updatedAt;
     private String videoUrl;
 
+
+
     public BoardPostResponseDto(BoardPost responseEntity) {
         this.postId = responseEntity.getPostId();
         this.title = responseEntity.getTitle();

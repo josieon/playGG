@@ -1,6 +1,5 @@
 package com.playGG.play.ggprojectboard.web;
 
-import com.playGG.play.ggprojectboard.config.SecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class) //Spring Framework 테스트를 위한 설정
 @WebMvcTest(controllers = HelloController.class) //컨트롤러만 테스트를 위한 설정
