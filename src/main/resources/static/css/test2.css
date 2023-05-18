@@ -1,0 +1,170 @@
+<style>
+
+    body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* 테이블 컨테이너 스타일
+        .table-container {
+            max-width: 600px;
+        }*/
+    /* 전체 테이블 스타일 */
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
+
+    /* 프로필 테이블 스타일 */
+    .summoner-profile {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    .summoner-profile td {
+        text-align: center;
+    }
+
+    .summoner-profile .profile-icon {
+        display: block;
+        margin: auto;
+        width: 50px;
+        height: 50px;
+    }
+
+    .summoner-profile .summoner-name {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .summoner-profile .summoner-level {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    /* 랭크 정보 테이블 스타일 */
+    .summoner-rank {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .summoner-rank .queue-type {
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .summoner-rank img {
+        display: block;
+        margin: auto;
+        width: 80px;
+        height: 80px;
+    }
+
+    .summoner-rank .tier-rank {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .summoner-rank .league-points {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .summoner-rank .win-loss {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .summoner-rank .win-percent {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    /* UNRANKED 스타일 */
+    .unranked {
+        font-size: 16px;
+        margin-top: 10px;
+        padding: 10px;
+        text-align: center;
+        background-color: #f0f8ff; /* 아주 연한 하늘색 */
+    }
+    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        margin-bottom: 20px;
+        background-color: #f0f8ff; /* 아주 연한 하늘색 */
+    }
+
+    .tg th {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .tg td {
+        border: 1px solid #ccc;
+        padding: 8px;
+    }
+
+    .tg img {
+        display: block;
+        margin: auto;
+        width: 30px;
+        height: 30px;
+    }
+
+    .tg-0lax {
+        vertical-align: top;
+    }
+
+    /* summoner-name 요소 */
+        .summoner-name {
+            font-weight: bold;
+        }
+
+        /* summoner-rank.unranked 요소 */
+        .summoner-rank.unranked {
+            font-weight: bold;
+        }
+
+        /* tier-rank 요소 */
+        .tier-rank {
+            font-weight: bold;
+        }
+
+        .tg {
+                border-collapse: collapse;
+                border-spacing: 0;
+                margin-bottom: 20px;
+                background-color: #f0f8ff; /* 아주 연한 하늘색 */
+                max-width: 800px; /* 최대 너비 설정 */
+                margin-left: auto; /* 왼쪽 여백을 자동으로 설정하여 중앙에 위치 */
+                margin-right: auto; /* 오른쪽 여백을 자동으로 설정하여 중앙에 위치 */
+            }
+
+             .tg-0lax {
+                    font-weight: bold;
+                }
+
+.image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 290px;
+    }
+.summoner-noSummoner {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    .summoner-noSummoner td {
+        text-align: center;
+    }
+
+</style>
