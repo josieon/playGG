@@ -1,0 +1,65 @@
+{{>layout/header}}
+<div class="container">
+    <h1>빌드</h1>
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <form action="/api/v1/posts" method="post">
+                {{#champion}}
+                    <div class="form-group">
+                        <label for="title">챔피언 {{statistic.championName}}</label>
+                    </div>
+                    <div>
+                        <label for="title">승률 : {{winRate}}%</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">픽률 : {{pickRate}}%</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">밴률 : {{banRate}}%</label>
+                    </div>
+                    <div class="form-group">
+                        <table class = "perk">
+                            <th>파편1</th>
+                            <th>파편2</th>
+                            <th>파편3</th>
+                            <th>메인1</th>
+                            <th>메인2</th>
+                            <th>메인3</th>
+                            <th>메인4</th>
+                            <th>보조1</th>
+                            <th>보조2</th>
+                            <th>픽률</th>
+                            <th>승률</th>
+                            {{#perks}}
+                                <tr>
+                                    {{#perk}}
+                                        <td>{{id}}</td>
+                                    {{/perk}}
+                                    <td>{{pickRate}}%</td>
+                                    <td>{{winRate}}%</td>
+                                </tr>
+                            {{/perks}}
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <table class = "counter">
+                            <th>상대하기 어려운 챔피언</th>
+                            <th>상대하기 쉬운 챔피언</th>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <table class = "spell">
+                            <th>소환사 주문</th>
+                        </table>
+                    </div>
+                    <div class = "form-group">
+                        <table class = "item">
+                            <th>아이템</th>
+                        </table>
+                    </div>
+                {{/champion}}
+            </form>
+        </div>
+    </div>
+</div>
+{{>layout/footer}}
