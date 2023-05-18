@@ -1,5 +1,6 @@
-package com.playdata.springbootproject.fow;
+package com.playdata.springbootproject.fow.DTO;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +11,7 @@ public class SummonerDto {
     private String accountId;
     private String puuid;
     private String name;
-//    private int profileIconId;
+    private int profileIconId;
     private long revisionDate;
     private int summonerLevel;
 

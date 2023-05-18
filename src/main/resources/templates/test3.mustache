@@ -1,0 +1,119 @@
+{{>layout/header}}
+<h1>Play.GG</h1>
+<form action="/summoners/kr" method="get">
+    <input type="text" name="name" placeholder="소환사명" size="30">
+    <input type="submit" value="검색">
+</form>
+{{#noSummoner}}
+    <table class="summoner-noSummoner" style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: flex-start;">
+        <tr>
+            <td >
+                <p style="font-size: 25px; text-align: center; margin-top: 50px; font-weight: bold;">존재하지 않는 소환사명입니다.</p>
+            </td>
+        </tr>
+    </table>
+{{/noSummoner}}
+{{#yesSummoner}}
+    <table class="summoner-profile">
+        <tr>
+            <td>
+                <img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/profileicon/{{profileIconId}}.png">
+                <h3 class="summoner-name">{{name}}</h3>
+                <p class="summoner-level">레벨 : {{summonerLevel}}</p>
+            </td>
+        </tr>
+    </table>
+{{/yesSummoner}}
+<table>
+    {{#unranked}}
+        <tr>
+            <td>
+                <p class="summoner-rank unranked">UNRANKED</p>
+            </td>
+        </tr>
+    {{/unranked}}
+    {{#leagueEntryDTOS}}
+        <tr>
+            <td>
+                <div class="summoner-rank">
+                    <p class="queue-type">{{queueType}}</p>
+                    <img src="https://opgg-static.akamaized.net/images/medals_new/{{tier}}.png?image=q_auto,f_webp,w_144&v=1683869446164">
+                    <p class="tier-rank">{{tier}} {{rank}}</p>
+                    <p class="league-points">리그 포인트 : {{leaguePoints}}</p>
+                    <p class="win-loss">{{total}}전 {{wins}}승 {{losses}}패</p>
+                    <p class="win-percent">승률 {{winsPercent}}%</p>
+                </div>
+            </td>
+        </tr>
+    {{/leagueEntryDTOS}}
+</table>
+{{#noCurrentGame}}
+    {{#noCurrentGameSummoner}}
+        <table style="text-align: center; margin: 0 auto;">
+            <tr>
+                <td style="padding: 10px; background-color: #f5f5f5; border: 1px solid #ddd;">
+                    <p style="font-size: 18px;">
+                    <p><strong style="font-size: 24px;">{{name}}</strong> 님은 현재 게임 중이 아닙니다.</p>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    {{/noCurrentGameSummoner}}
+{{/noCurrentGame}}
+{{#matchContainers}}
+    <table align="center" style="font-size: 20px; border-radius: 30px; transform: translateY(-50%);" class="alert alert-success" role="alert">
+        <tr>
+            <th>{{queueType2}} </th>
+            <th colspan="2" rowspan="4"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{championName}}.png" alt="Image" width="150" height="150" class="champion-img"></th>
+            <th colspan="2" rowspan="2"><img src="https://opgg-static.akamaized.net/meta/images/lol/spell/{{summoner1Id}}.png?image=q_auto,f_webp,w_44&v=1684225762295" alt="Image" width="40" height="40">
+                <br><img src="https://opgg-static.akamaized.net/meta/images/lol/spell/{{summoner2Id}}.png?image=q_auto,f_webp,w_44&v=1684225762295" alt="Image" width="40" height="40"></th>
+            <th>kda : {{kills}}/{{deaths}}/{{assists}}</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{topChampName1}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{topUser1}}</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{topChampName2}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{topUser2}}</th>
+        </tr>
+        <tr>
+            <th>{{timeAgo}} </th>
+            <th>평점 : {{kda}}</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{jungleChampName1}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{jungleUser1}}</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{jungleChampName2}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{jungleUser2}}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th colspan="2" rowspan="2"><img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/{{mainPerk}}.png" alt="Image" width="40" height="40">
+                <br><img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/{{subStyle}}.png" alt="Image" width="40" height="40"></th>
+            <th>킬관여 {{killsPartRate}}</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{midChampName1}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{midUser1}}</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{midChampName2}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{midUser2}}</th>
+        </tr>
+        <tr>
+            <th>{{isWins}} </th>
+            <th>CS {{totalCs}} ({{csPerMin}})</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{adChampName1}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{adUser1}}</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{adChampName2}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{adUser2}}</th>
+        </tr>
+        <tr>
+            <th>{{gameMinutes}}분 {{gameSeconds}}초 </th>
+            <th colspan="4"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item0}}.png" onerror="this.src='https://img.freepik.com/premium-vector/white-texture-round-striped-surface-white-soft-cover_547648-928.jpg'" alt="" width="40" height="40">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item1}}.png" onerror="this.src='https://img.freepik.com/premium-vector/white-texture-round-striped-surface-white-soft-cover_547648-928.jpg'" alt="" width="40" height="40">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item2}}.png" onerror="this.src='https://img.freepik.com/premium-vector/white-texture-round-striped-surface-white-soft-cover_547648-928.jpg'" alt="" width="40" height="40">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item3}}.png" onerror="this.src='https://img.freepik.com/premium-vector/white-texture-round-striped-surface-white-soft-cover_547648-928.jpg'" alt="" width="40" height="40">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item4}}.png" onerror="this.src='https://img.freepik.com/premium-vector/white-texture-round-striped-surface-white-soft-cover_547648-928.jpg'" alt="" width="40" height="40">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item5}}.png" onerror="this.src='https://img.freepik.com/premium-vector/white-texture-round-striped-surface-white-soft-cover_547648-928.jpg'" alt="" width="40" height="40">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item6}}.png" onerror="this.src='https://img.freepik.com/premium-vector/white-texture-round-striped-surface-white-soft-cover_547648-928.jpg'" alt="" width="40" height="40"></th>
+            <th>제어와드 {{visionWard}}</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{supChampName1}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{supUser1}}</th>
+            <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{supChampName2}}.png" alt="Image" width="40" height="40"></th>
+            <th>{{supUser2}}</th>
+        </tr>
+    </table>
+{{/matchContainers}}
+{{>layout/footer}}

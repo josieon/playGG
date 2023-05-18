@@ -1,7 +1,4 @@
-package com.playdata.springbootproject.fow;
-import com.playdata.springbootproject.fow.InGame.BannedChampion;
-import com.playdata.springbootproject.fow.InGame.CurrentGameParticipant;
-import com.playdata.springbootproject.fow.InGame.Observer;
+package com.playdata.springbootproject.fow.DTO.InGame;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +6,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class InGameDto {
+public class CurrentGameInfo {
     private long gameId;
     private String gameType;
     private long gameStartTime;
@@ -23,4 +20,5 @@ public class InGameDto {
     private Observer Observers;
     private List<CurrentGameParticipant> participants;
 
+    private String currentGameTime;
 }

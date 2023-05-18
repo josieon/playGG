@@ -1,0 +1,109 @@
+{{>layout/header}}
+<h1>Play.GG</h1>
+<table class="summoner-profile">
+    <tr>
+        <td>
+            <img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/profileicon/{{profileIcon}}.png">
+            <h3 class="summoner-name">{{name}}</h3>
+            <p class="summoner-level">레벨: {{summonerLevel}}</p>
+        </td>
+    </tr>
+    {{#unranked}}
+        <tr>
+            <td>
+                <p class="summoner-rank unranked">UNRANKED</p>
+            </td>
+        </tr>
+    {{/unranked}}
+    {{#leagueEntryDTOS}}
+        <tr>
+            <td>
+                <div class="summoner-rank">
+                    <p class="queue-type">{{queueType}}</p>
+                    <img src="https://opgg-static.akamaized.net/images/medals_new/{{tier}}.png?image=q_auto,f_webp,w_144&v=1683869446164">
+                    <p class="tier-rank">{{tier}} {{rank}}</p>
+                    <p class="league-points">리그 포인트: {{leaguePoints}}</p>
+                    <p class="win-loss">{{total}}전 {{wins}}승 {{losses}}패</p>
+                    <p class="win-percent">승률 {{winsPercent}}%</p>
+                </div>
+            </td>
+        </tr>
+    {{/leagueEntryDTOS}}
+</table>
+
+{{#matchContainers}}
+    <table class="champion-info">
+        <tr>
+            <td>
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{championName}}.png" alt="{{championName}}" class="image-size">
+                <p>레벨 : {{championLevel}}</p>
+            </td>
+            <td>
+                <img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/{{mainPerk}}.png" class="image-size">
+                <img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/{{subStyle}}.png" class="image-size">
+            </td>
+            <td>
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item0}}.png" class="image-size">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item1}}.png" class="image-size">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item2}}.png" class="image-size">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item3}}.png" class="image-size">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item4}}.png" class="image-size">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item5}}.png" class="image-size">
+                <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item6}}.png" class="image-size">
+                https://z.fow.kr/spell/{{summoner2Id}}.png
+            </td>
+        </tr>
+    </table>
+    <table>
+                    <tr>
+                    <td>
+                        <div class="content-wrapper">
+                    <table>
+                        <td>
+                            <p>{{queueType2}}</p>
+                            <p>{{timeAgo}}</p>
+                            <p>{{isWins}}</p>
+                            <p>{{gameMinutes}}분 {{gameSeconds}}초</p>
+                        </td>
+                    </table>
+                    <td>
+                    <td>
+                    <table>
+                        <td>
+                        <p>kda : {{kills}}/{{deaths}}/{{assists}}</p>
+                        <p>평점 : {{kda}}</p>
+                        <p>킬관여율 {{killsPartRate}}%</p>
+                        <p>제어와드 {{visionWard}}</p>
+                        <p>CS {{totalCs}} ({{csPerMin}})</p>
+                        </td>
+                    </table>
+                    </td>
+                    <div>
+                    <table>
+                        <tr>
+                            <td><a href="http://localhost:8080/summoners/kr/{{topUser1}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{topChampName1}}.png" width="30" height="30">{{topUser1}}</a></td>
+                            <td><a href="http://localhost:8080/summoners/kr/{{topUser2}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{topChampName2}}.png" width="30" height="30">{{topUser2}}</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="http://localhost:8080/summoners/kr/{{jungleUser1}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{jungleChampName1}}.png" width="30" height="30">{{jungleUser1}}</a></td>
+                            <td><a href="http://localhost:8080/summoners/kr/{{jungleUser2}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{jungleChampName2}}.png" width="30" height="30">{{jungleUser2}}</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="http://localhost:8080/summoners/kr/{{midUser1}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{midChampName1}}.png" width="30" height="30">{{midUser1}}</a></td><
+                            <td><a href="http://localhost:8080/summoners/kr/{{midUser2}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{midChampName2}}.png" width="30" height="30">{{midUser2}}</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="http://localhost:8080/summoners/kr/{{adUser1}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{adChampName1}}.png" width="30" height="30">{{adUser1}}</a></td>
+                            <td><a href="http://localhost:8080/summoners/kr/{{adUser2}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{adChampName2}}.png" width="30" height="30">{{adUser2}}</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="http://localhost:8080/summoners/kr/{{supUser1}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{supChampName1}}.png" width="30" height="30">{{supUser1}}</a></td>
+                            <td><a href="http://localhost:8080/summoners/kr/{{supUser1}}"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{supChampName2}}.png" width="30" height="30">{{supUser2}}</a></td>
+                        </tr>
+                    </table>
+                    </div>
+                    </td>
+                </tr>
+             </table>
+{{/matchContainers}}
+    {{>layout/footer}}

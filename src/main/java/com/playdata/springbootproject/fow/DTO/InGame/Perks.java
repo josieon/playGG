@@ -1,4 +1,4 @@
-package com.playdata.springbootproject.fow.InGame;
+package com.playdata.springbootproject.fow.DTO.InGame;
 
 import lombok.Getter;
 import lombok.Setter;

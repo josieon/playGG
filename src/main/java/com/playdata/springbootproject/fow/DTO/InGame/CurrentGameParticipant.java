@@ -1,4 +1,4 @@
-package com.playdata.springbootproject.fow.InGame;
+package com.playdata.springbootproject.fow.DTO.InGame;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,4 +18,7 @@ public class CurrentGameParticipant {
     private long spell1Id;
     private long spell2Id;
     private List<GameCustomizationObject> gameCustomizationObjects;
+
+    private String tier;
+    private String rank;
 }

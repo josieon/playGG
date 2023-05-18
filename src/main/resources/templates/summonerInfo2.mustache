@@ -1,0 +1,289 @@
+{{>layout/header}}
+<h1>Play.GG</h1>
+<img class="profile-icon" src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/profileicon/{{profileIcon}}.png">
+<h3 class="summoner-name">{{name}}</h3>
+<p class="summoner-level">레벨: {{summonerLevel}}</p>
+{{#unranked}}
+    <!-- league 배열 길이가 0일 때의 코드 -->
+    <p class="summoner-rank unranked">UNRANKED</p>
+{{/unranked}}
+{{#leagueEntryDTOS}}
+    <!-- league 배열 길이가 1일 때의 코드 -->
+    <div class="summoner-rank">
+        <p class="queue-type">{{queueType}}</p>
+        <img src="https://opgg-static.akamaized.net/images/medals_new/{{tier}}.png?image=q_auto,f_webp,w_144&v=1683869446164">
+        <p class="tier-rank">{{tier}} {{rank}}</p>
+        <p class="league-points">리그 포인트 : {{leaguePoints}}</p>
+        <p class="win-loss">{{total}}전 {{wins}}승 {{losses}}패</p>
+        <p class="win-percent">승률 {{winsPercent}}%</p>
+    </div>
+{{/leagueEntryDTOS}}
+<p>{{! 공백 줄 }}</p>
+<p>----------------------------------------------------------------</p>
+
+<div>
+    {{#matchContainers}}
+        <li class="match">
+            <div class="match-container">
+                <div class="content">
+                    <div class="game-content">
+                        <div class="game">
+                            <div class="type">솔랭</div>
+                            <div class="time-stamp">
+                                <div class="" style="position: relative;">12일 전</div>
+                            </div>
+                            <div class="bar"></div>
+                            <div class="result">승리</div>
+                            <div class="length">25분 43초</div>
+                        </div>
+                        <div class="info">
+                            <div>
+                                <div class="champion">
+                                    <div class="icon"><a href="/champions/kennen" target="_blank" rel="noreferrer"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/Kennen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_96&amp;v=1684072072534"
+                                            width="48" alt="케넨" height="48"><span class="champion-level">15</span></a>
+                                    </div>
+                                    <div class="spells">
+                                        <div class="spell">
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerTeleport.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="순간이동" height="22"></div>
+                                        </div>
+                                        <div class="spell">
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/spell/SummonerFlash.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="점멸" height="22"></div>
+                                        </div>
+                                    </div>
+                                    <div class="runes">
+                                        <div class="rune">
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/perk/8369.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="선제공격" height="22"></div>
+                                        </div>
+                                        <div class="rune">
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/perkStyle/8100.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="지배" height="22"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kda">
+                                    <div class="k-d-a"><span>10</span> / <span class="d">3</span> / <span>6</span></div>
+                                    <div class="ratio"><span>5.33:1</span> 평점</div>
+                                </div>
+                                <div class="stats">
+                                    <div class="p-kill">
+                                        <div class="" style="position: relative;">킬관여 67%</div>
+                                    </div>
+                                    <div class="ward">제어 와드 5</div>
+                                    <div class="cs">
+                                        <div class="" style="position: relative;">CS 184 (7.2)</div>
+                                    </div>
+                                    <div class="average-tier">
+                                        <div class="" style="position: relative;">grandmaster</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="items">
+                                    <ul>
+                                        <li>
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/item/3152.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="마법공학 로켓 벨트" height="22"></div>
+                                        </li>
+                                        <li>
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/item/3135.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="공허의 지팡이" height="22"></div>
+                                        </li>
+                                        <li>
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/item/3157.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="존야의 모래시계" height="22"></div>
+                                        </li>
+                                        <li>
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/item/3020.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="마법사의 신발" height="22"></div>
+                                        </li>
+                                        <li>
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/item/4645.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="그림자불꽃" height="22"></div>
+                                        </li>
+                                        <li>
+                                            <div class="" style="position: relative;"><img
+                                                    src="https://opgg-static.akamaized.net/meta/images/lol/item/1058.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                    width="22" alt="쓸데없이 큰 지팡이" height="22"></div>
+                                        </li>
+                                    </ul>
+                                    <div class="ward">
+                                        <div class="" style="position: relative;"><img
+                                                src="https://opgg-static.akamaized.net/meta/images/lol/item/3364.png?image=q_auto,f_webp,w_44&amp;v=1684072072534"
+                                                width="22" alt="예언자의 렌즈" height="22"></div>
+                                    </div>
+                                </div>
+                                <div class="multi-kill">더블킬</div>
+                                <div class="badge mvp">MVP</div>
+                            </div>
+                        </div>
+                        <div class="participants">
+                            <ul>
+                                <li class="css-1ahqe5t e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/KSante.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="크산테" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/7I%EB%AA%A8%EB%9D%A0%20" target="_blank"
+                                                         rel="noreferrer">7I모띠 </a></div>
+                                </li>
+                                <li class="css-1ahqe5t e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/Taliyah.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="탈리야" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/%ED%83%80%20%EC%9E%94" target="_blank"
+                                                         rel="noreferrer">타 잔</a></div>
+                                </li>
+                                <li class="css-rea7zu e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/Kennen.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="케넨" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/Hide%20on%20bush" target="_blank"
+                                                         rel="noreferrer">Hide on bush</a></div>
+                                </li>
+                                <li class="css-1ahqe5t e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/Samira.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="사미라" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/%EC%8A%A4%EC%BB%AC%EC%A7%80"
+                                                         target="_blank" rel="noreferrer">스컬지</a></div>
+                                </li>
+                                <li class="css-1ahqe5t e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/Nautilus.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="노틸러스" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/Sadays" target="_blank" rel="noreferrer">Sadays</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li class="css-1ahqe5t e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/Rakan.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="라칸" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/Cuzz" target="_blank"
+                                                         rel="noreferrer">Cuzz</a></div>
+                                </li>
+                                <li class="css-1ahqe5t e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/LeeSin.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="리 신" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/Juhana" target="_blank" rel="noreferrer">Juhana</a>
+                                    </div>
+                                </li>
+                                <li class="css-1ahqe5t e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/Malphite.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="말파이트" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/iffffffffffff" target="_blank"
+                                                         rel="noreferrer">iffffffffffff</a></div>
+                                </li>
+                                <li class="css-1ahqe5t e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/Ezreal.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="이즈리얼" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/ecrrd" target="_blank" rel="noreferrer">ecrrd</a>
+                                    </div>
+                                </li>
+                                <li class="css-1ahqe5t e1iiyghw1">
+                                    <div class="icon" style="position: relative;"><img
+                                            src="https://opgg-static.akamaized.net/meta/images/lol/champion/Karma.png?image=c_crop,h_103,w_103,x_9,y_9/q_auto,f_webp,w_32&amp;v=1684072072534"
+                                            width="16" alt="카르마" height="16"></div>
+                                    <div class="name"><a href="/summoners/kr/zweqaszsac" target="_blank"
+                                                         rel="noreferrer">zweqaszsac</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="action"></div>
+            </div>
+        </li>
+    {{/matchContainers}}
+</div>
+{{#matchContainers}}
+    <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{championName}}.png" alt={{championName}}>
+    <p>{{championLevel}}</p>
+    <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item0}}.png">
+    <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item1}}.png">
+    <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item2}}.png">
+    <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item3}}.png">
+    <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item4}}.png">
+    <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item5}}.png">
+    <img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/{{item6}}.png">
+    <img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/{{mainPerk}}.png">
+    <img src="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/{{subStyle}}.png">
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <td>
+                        <p>{{queueType2}}</p>
+                        <p>{{timeAgo}}</p>
+                        <p>{{isWins}}</p>
+                        <p>{{gameMinutes}}분 {{gameSeconds}}초</p>
+                    </td>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <td style="line-height: 0.8;">
+                        <p>kda : {{kills}}/{{deaths}}/{{assists}}</p>
+                        <p>평점 : {{kda}}</p>
+                        <p>관여 {{killsPartRate}}%</p>
+                        <p>제어와드 {{visionWard}}</p>
+                        <p>CS {{totalCs}}({{csPerMin}})</p>
+                    </td>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{topChampName1}}.png"
+                                 width="20" height="20">{{topUser1}}</td>
+                        <td><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{topChampName2}}.png"
+                                 width="20" height="20">{{topUser2}}</td>
+                    </tr>
+                    <tr>
+                        <td><img
+                                src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{jungleChampName1}}.png"
+                                width="20" height="20">{{jungleUser1}}</td>
+                        <td><img
+                                src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{jungleChampName2}}.png"
+                                width="20" height="20">{{jungleUser2}}</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{midChampName1}}.png"
+                                 width="20" height="20">{{midUser1}}</td>
+                        <td><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{midChampName2}}.png"
+                                 width="20" height="20">{{midUser2}}</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{adChampName1}}.png"
+                                 width="20" height="20">{{adUser1}}</td>
+                        <td><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{adChampName2}}.png"
+                                 width="20" height="20">{{adUser2}}</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{supChampName1}}.png"
+                                 width="20" height="20">{{supUser1}}</td>
+                        <td><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{supChampName2}}.png"
+                                 width="20" height="20">{{supUser2}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+{{/matchContainers}}
+{{>layout/footer}}
