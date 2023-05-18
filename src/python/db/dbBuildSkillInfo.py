@@ -3,13 +3,13 @@ import pymysql
 import re
 
 # 로컬 MariaDB
-db = pymysql.connect(
-    user='root',
-    passwd='playdata',
-    host='127.0.0.1',
-    db='playGG',
-    charset='utf8'
-)
+# db = pymysql.connect(
+#     user='root',
+#     passwd='playdata',
+#     host='127.0.0.1',
+#     db='playGG',
+#     charset='utf8'
+# )
 
 # AWS RDS
 with open("src/main/resources/application-hide.properties") as f:

@@ -6,7 +6,7 @@ import org.springframework.stereotype.*;
 import java.util.*;
 
 @Repository
-public interface ChampionsRepository extends JpaRepository<Champion, Integer> {
-    @Query("select c from Champion c")
-    List<Champion> findAll();
+public interface ChampionsRepository extends JpaRepository<champion_statistic, Integer> {
+    @Query("select c from champion_statistic c")
+    List<champion_statistic> findAll();
 }

@@ -8,19 +8,19 @@ import java.io.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Champion implements Serializable {
+public class champion_statistic implements Serializable {
     @Id
     private Integer championId;
     @Column(length = 30, nullable = false)
-    private String champName;
+    private String championName;
     private Integer wins;
     private Integer choices;
     private Integer bans;
 
     @Builder
-    public Champion(Integer championId, String champName, Integer wins, Integer choices, Integer bans) {
+    public champion_statistic(Integer championId, String championName, Integer wins, Integer choices, Integer bans) {
         this.championId = championId;
-        this.champName = champName;
+        this.championName = championName;
         this.wins = wins;
         this.choices = choices;
         this.bans = bans;
