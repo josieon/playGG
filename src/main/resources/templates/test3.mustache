@@ -118,7 +118,7 @@
     </table>
 {{/yesCurrentGame}}
 {{#matchContainers}}
-    <table align="center" style="font-size: 20px; border-radius: 30px;" class="alert alert-success" role="alert">
+    <table id="a" align="center" style="font-size: 20px; border-radius: 30px;" class="{{#isWins2}}alert alert-primary{{/isWins2}}{{^isWins2}}alert alert-danger{{/isWins2}}">
         <tr>
             <th>{{queueType2}} </th>
             <th colspan="2" rowspan="4"><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{championName}}.png" alt="Image" width="150" height="150" class="champion-img"></th>
@@ -149,7 +149,7 @@
             <th><a href="http://localhost:8080/summoners/kr?name={{midUser2}}">{{midUser2}}</a></th>
         </tr>
         <tr>
-            <th>{{isWins}} </th>
+            <th>{{isWins}}</th>
             <th>CS {{totalCs}} ({{csPerMin}})</th>
             <th><img src="http://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/{{adChampName1}}.png" alt="Image" width="40" height="40"></th>
             <th><a href="http://localhost:8080/summoners/kr?name={{adUser1}}">{{adUser1}}</a></th>

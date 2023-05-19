@@ -26,6 +26,7 @@ public class MatchContainer {
     private String queueType2;
     private String timeAgo;
     private String isWins;
+    private String isWins2;
     private int gameMinutes;
     private int gameSeconds;
     private int visionWard;

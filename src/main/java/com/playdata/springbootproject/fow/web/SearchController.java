@@ -380,10 +380,13 @@ public class SearchController {
 
                 ///승패 구하기
                 String isWins;
+                String isWins2;
                 if (participantStart.get(i).isWin() == true) {
                     isWins = "승리";
+                    isWins2 = "승리";
                 } else {
                     isWins = "패배";
+                    isWins2 = null;
                 }
 
 
@@ -555,6 +558,7 @@ public class SearchController {
                 matchContainer.setTimeAgo(timeAgo);
 
                 matchContainer.setIsWins(isWins);
+                matchContainer.setIsWins2(isWins2);
 
                 matchContainer.setGameMinutes(gameMinutes);
                 matchContainer.setGameSeconds(gameSeconds);
