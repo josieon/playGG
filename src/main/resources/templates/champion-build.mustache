@@ -6,7 +6,8 @@
             <form action="/api/v1/posts" method="post">
                 {{#champion}}
                     <div class="info">
-                        <label for="title">챔피언 {{statistic.championName}}</label>
+<!--                        <label for="title">챔피언 {{statistic.championName}}</label>-->
+                        <label for="title"><img src="{{profileImage}}" width="70" height="70"> </label>
                         <label for="title">승률 : {{winRate}}%</label>
                         <label for="author">픽률 : {{pickRate}}%</label>
                         <label for="content">밴률 : {{banRate}}%</label>
@@ -27,7 +28,8 @@
                             {{#perks}}
                                 <tr>
                                     {{#perk}}
-                                        <td>{{id}}</td>
+<!--                                        <td><img src="https://opgg-static.akamaized.net/meta/images/lol/perkShard/.png" width="30" height="30"></td>-->
+                                        <td><img src="{{perkImage}}" width="30" height="30"></td>
                                     {{/perk}}
                                     <td>{{pickRate}}%</td>
                                     <td>{{winRate}}%</td>

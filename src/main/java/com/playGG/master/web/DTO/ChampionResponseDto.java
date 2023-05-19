@@ -8,6 +8,7 @@ import java.util.*;
 @Getter
 public class ChampionResponseDto {
     private champion_statistic statistic;
+    private String profileImage;
     private Float winRate;
     private Float pickRate;
     private Float banRate;

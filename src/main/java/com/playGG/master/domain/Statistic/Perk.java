@@ -5,4 +5,5 @@ import lombok.*;
 @AllArgsConstructor
 public class Perk {
     int id;
+    String perkImage;
 }

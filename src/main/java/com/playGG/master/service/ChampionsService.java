@@ -17,6 +17,7 @@ public class ChampionsService {
     private final SpellsRepository spellsRepository;
     private final CounterRepository counterRepository;
     private final ItemRepository itemRepository;
+    private final ChampionIdMapper championIdMapper = new ChampionIdMapper();
 
     @Transactional(readOnly = true)
     public List<ChampsListResponseDto> findAll() {
@@ -40,13 +41,21 @@ public class ChampionsService {
                 .pickRate((float)Math.round(10000 * c.getChoices() / gameCount) / 100)
                 .perks(perksRepository.findAllById(championId).stream()
                         .sorted(Comparator.comparing(perk_statistic::getChoices).reversed())
-                        .map(e -> new Perks(e, c.getChoices()))
+                        .map(e -> Perks.builder()
+                                        .pickRate((float)Math.round(10000 * e.getChoices() / gameCount) / 100)
+                                        .winRate((float)Math.round(10000 * e.getWins() / e.getChoices()) / 100)
+                                        .perk(Arrays.stream(e.getPerkPK().getPerks().split(","))
+                                                .map(p -> new Perk(Integer.parseInt(p), Integer.parseInt(p) > 7000 ?
+                                                        "https://opgg-static.akamaized.net/meta/images/lol/perk/" + p + ".png"
+                                                        : "https://opgg-static.akamaized.net/meta/images/lol/perkShard/" + p +".png"))
+                                                .collect(Collectors.toList()))
+                                        .build()
 //                            Perks.builder()
 //                                    .pickRate()
 //                                    .winRate()
 //                                    .perks(e.getPerks())
 //                                    .build();
-//                        )
+                        )
                         .collect(Collectors.toList()))
                 .spells(spellsRepository.findAllBy(championId).stream()
                         .map(e -> Spells.builder()
@@ -94,6 +103,7 @@ public class ChampionsService {
                                 .winRate((float)Math.round(10000 * e.getWins() / e.getChoices()) / 100)
                                 .build())
                         .collect(Collectors.toList()))
+                .profileImage(championIdMapper.getChampImgURL(championId))
                 .build();
 //        List<perk_statistic> p = perksRepository.findAllById(championId);
 //        for(perk_statistic a : p) {
