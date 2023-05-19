@@ -1,0 +1,54 @@
+{{>layout/header}}
+    <div id="role-selection">
+        <label>
+            <input type="radio" name="role" value="top"> <img src="img/position.png" alt="전체"width="50" height="50">Top
+        </label>
+
+        <label>
+            <input type="radio" name="role" value="mid"> Mid
+        </label>
+
+        <label>
+            <input type="radio" name="role" value="jungle"> Jungle
+        </label>
+
+        <label>
+            <input type="radio" name="role" value="bottom"> Bottom
+        </label>
+        <label>
+            <input type="radio" name="role" value="supporter"> Supporter
+        </label>
+    </div>
+    <div class="tier">
+        <label for="tier">티어</label>
+        <select name="tier" id="tier" class="form-control">
+            <option value="Bronze"{{#tierSelected "Bronze"}} selected{{/tierSelected}}>Bronze</option>
+            <option value="Silver"{{#tierSelected "Silver"}} selected{{/tierSelected}}>Silver</option>
+            <option value="Gold"{{#tierSelected "Gold"}} selected{{/tierSelected}}>Gold</option>
+            <option value="Platinum"{{#tierSelected "Platinum"}}selected{{/tierSelected}}>Platinum</option>
+            <option value="Platinum"{{#tierSelected "Platinum"}}selected{{/tierSelected}}>Diamond</option>
+            <option value="Platinum"{{#tierSelected "Platinum"}}selected{{/tierSelected}}>Master</option>
+            <option value="Platinum"{{#tierSelected "Platinum"}}selected{{/tierSelected}}>GrandMaster</option>
+            <option value="Platinum"{{#tierSelected "Platinum"}}selected{{/tierSelected}}>Challenger</option>
+        </select>
+    </div>
+
+    <div id ="role-content">
+        {{#duoList}}
+            <div class="duo-item">
+                <h2 class="duo-item-title">제목:{{title}}</h2>
+                <p class="duo-item-name">작성자:{{author}}</p>
+                <p class="duo-item-content">내용:{{content}}</p>
+                <p class="duo-item-position">포지션:{{position}}</p>
+                <p class="duo-item-tier">티어{{tier}}</p>
+            </div>
+        {{/duoList}}
+        {{^duoList}}
+            <p>No duos found.</p>
+        {{/duoList}}
+
+    </div>
+
+
+
+{{>layout/footer}}

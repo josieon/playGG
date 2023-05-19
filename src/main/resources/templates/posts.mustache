@@ -1,0 +1,82 @@
+{{> layout/header}}
+    <h1>play.GG</h1>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h2>Duo Freinds에 오신걸 환영합니다.</h2>
+            </div>
+            <div class="col-sm">
+                <h2>DUO Freinds입니다.</h2>
+            </div>
+            <a href="/posts/dto" role="button" class="btn btn-primary">글등록</a>
+        </div>
+    </div>
+    <br>
+    <style>
+        table{
+            width: 20%;
+            border-collapse: collapse;
+            }
+        th, td{
+            paddinig: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            }
+    </style>
+    <div id="role-selection">
+        <label>
+            <a href = "/posts"><input type="button" name="role" value="all"><img src="/img/position.png" alt="전체"width="50" height="50"></a>
+        </label>
+
+        <label>
+            <a href ="/posts/탑"><input type="button" name="role" value="top"><img src="/img/top.png" alt="탑"width="50" height="50"></a>
+        </label>
+
+        <label>
+            <a href ="/posts/미드"><input type="button" name="role" value="mid"><img src="/img/mid.png" alt="미드"width="50" height="50"></a>
+        </label>
+
+        <label>
+            <a href="/posts/정글"> <input type="button" name="role" value="jungle"> <img src="/img/jungle.png" alt="정글"width="50" height="50"></a>
+        </label>
+
+        <label>
+            <a href="/posts/원딜"><input type="button" name="role" value="bottom"> <img src="/img/bot.png" alt="원딜"width="50" height="50"></a>
+        </label>
+
+        <label>
+            <a href="/posts/서포터"><input type="button" name="role" value="supporter"> <img src="/img/supporter.png" alt="서포터"width="50" height="50"></a>
+        </label>
+    </div>
+    <br>
+    <style>
+            .grid-container {
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* 열 개수 조정 */
+              grid-gap: 20px; /* 각 게시물 사이의 간격 설정 */
+            }
+            .post {
+              border: 1px solid #ccc;
+              padding: 10px;
+            }
+    </style>
+    <div id ="role-content">
+            <div id="duo-search-board">
+                <div class="grid-container">
+                {{#duoList}}
+                    <div class="duo-item post">
+                        <h2 class="duo-item-title">제목:{{title}}</h2>
+                        <p class="duo-item-name">작성자:<a href="https://www.op.gg/summoners/kr/{{author}}">{{author}}</a></p>
+                        <p class="duo-item-content">내용:{{content}}</p>
+                        <p class="duo-item-position">포지션:{{position}}</p>
+                        <p class="duo-item-tier">티어:{{tier}}</p>
+                    </div>
+                {{/duoList}}
+
+                    <p>No duos found.</p>
+            </div>
+        </div>
+    </div>
+{{> layout/footer}}

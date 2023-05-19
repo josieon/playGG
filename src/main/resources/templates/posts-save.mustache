@@ -1,0 +1,70 @@
+{{>layout/header}}
+<div class="container">
+    <h1>게시물 등록</h1>
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <form action="/posts/dto" method="post">
+                <div class="form-group">
+                    <label for="title">제목</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="제목">
+                </div>
+                <div class="form-group">
+                    <label for="author">닉네임</label>
+                    <input type="text" name="author" class="form-control" id="author" placeholder="닉네임를 입력하세요.">
+                </div>
+                <div class="form-group">
+                    <label for="content">내용</label>
+                    <textarea name="content" id="content" class="form-control" placeholder="내용을 입력하세요."></textarea>
+                </div>
+                <div>
+                    <lable for="position">포지션</lable>
+                    <input type="radio" name="position" value="전체" id="option1" >
+                    <label for="option1">전체</label>
+                    <input type="radio" name="position" value="탑" id="option2" >
+                    <label for="option2">탑</label>
+                    <input type="radio" name="position" value="미드" id="option3" >
+                    <label for="option3">미드</label>
+                    <input type="radio" name="position" value="정글" id="option4" >
+                    <label for="option4">정글</label>
+                    <input type="radio" name="position" value="원딜" id="option5" >
+                    <label for="option5">원딜</label>
+                    <input type="radio" name="position" value="서포터" id="option6" >
+                    <label for="option6">서포터</label>
+                </div>
+                <div class ="tier">
+                    <label for="tier">티어</label>
+                    <select name="tier" id="tier" class="form-control">
+                        <option value="Bronze">Bronze</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="Diamond">Diamond</option>
+                        <option value="Master">Master</option>
+                        <option value="Grandmaster">Grandmaster</option>
+                        <option value="Challenger">Challenger</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="que">큐</label>
+                    <select name="solo_rank" id="solo_rank" class="form-control">
+                        <option value="solo">솔로랭크</option>
+                        <option value="team">자유랭크</option>
+                        <option value="free">일반</option>
+                        <option value="wind">칼바람</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <a href="/" role="button" class="btn btn-secondary">취소</a>
+                    <button id="btn-save" class="btn btn-primary" type="button">등록</button>
+<!--                    <input type="button" value="Submit">-->
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+{{>layout/footer}}
