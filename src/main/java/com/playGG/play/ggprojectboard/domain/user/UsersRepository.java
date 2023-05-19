@@ -12,5 +12,19 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
      * @param email
      * @return Optional<Users>
      */
+    // OAuth
     Optional<Users> findByEmail(String email); //명명 규칙에 따라 JPA가 처리
+
+    // Security
+    Optional<Users> findByName(String name);
+
+    // user name
+    Users findByNickname(String nickname);
+
+    // 아이디 중복 검사, 중복 true, 중복이 아닌 경우 false
+    boolean existsByName(String name);
+    boolean existsByNickname(String nickname);
+    boolean existsByEmail(String email);
+
+
 }

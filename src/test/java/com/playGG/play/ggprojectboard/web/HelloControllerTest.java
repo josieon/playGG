@@ -1,5 +1,6 @@
 package com.playGG.play.ggprojectboard.web;
 
+import com.playGG.play.ggprojectboard.config.auth.SecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

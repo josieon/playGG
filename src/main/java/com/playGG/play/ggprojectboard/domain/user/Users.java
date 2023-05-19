@@ -21,17 +21,28 @@ import java.util.List;
 public class Users extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userid; // 회원 번호
+    private Long userId; // 회원 번호
 
-    @Column
-    private String name; // 회원 닉네임
+    public Long getUserId() {
+        return userId;
+    }
 
-    @Column
-    private String email; //이메일주소
+    @Column(unique = true)
+    private String name; // 회원 이름
 
-//    @Column(nullable = false, length = 3)
-//    private String allowing_email; 추가 구현 예정
+    @Column(unique= true)
+    private String nickname; //닉네임
+
+    @Column(unique = true)
+    private String email; //이메일주소, 아이디
+
+    @Column(length = 100)
+    private String password;
+
+    // @Column(nullable = false, length = 3)
+    // private String allowing_email; 추가 구현 예정
     // 등급 추가 예정
+
     @Column
     private String picture;
 
@@ -49,11 +60,13 @@ public class Users extends AuditingEntity {
     private Role role;
 
     @Builder
-    public Users(String name, String email, String picture,
-                 List<BoardPost> boardPostList, List<Comments> commentsList,
-                 List<Reply> replyList, Role role) {
+    public Users(String name, String nickname, String email,
+                 String password, String picture, List<BoardPost> boardPostList,
+                 List<Comments> commentsList, List<Reply> replyList, Role role) {
         this.name = name;
+        this.nickname = nickname;
         this.email = email;
+        this.password = password;
         this.picture = picture;
         this.boardPostList = boardPostList;
         this.commentsList = commentsList;
@@ -61,15 +74,23 @@ public class Users extends AuditingEntity {
         this.role = role;
     }
 
+
     /**
      * 사용자 정보를 업데이트
+     *
      * @param name, picture
      * @return 업데이트된 사용자 정보
      */
-    public Users update(String name, String picture){
+
+    public Users update(String name){
         this.name = name;
-        this.picture = picture;
         return this;
+    }
+
+    // 회원 정보 수정
+    public void modify(String nickname, String password) {
+        this.nickname = nickname;
+        this.password = password;
     }
 
     /**

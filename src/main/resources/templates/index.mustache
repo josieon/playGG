@@ -6,14 +6,13 @@
 <!--        background-position : center bottom;-->
 <!--    }-->
 <!--</style>-->
-<h1>전체</h1>
+
 <h1>게시글 리스트</h1>
 <div class="col-md-12">
     <div class="row">
         <div class="col-md-6">
-            <a href="/community/postsave" role ="button" class="btn btn-primary">글쓰기</a>
             {{#userName}}
-                Logged in as : <span id="users">{{userName}}</span>
+                <span id="users">{{userName}}</span>님 환영합니다!
                 <a href="/logout" class="btn btn-info active" role="button">로그아웃</a>
             {{/userName}}
             {{^userName}}
@@ -23,22 +22,32 @@
     </div>
     <br>
 <!--게시글 리스트 조회-->
+
+    <div id ="posts_list">
     <table class="table table-horizontal table-bordered">
         <thead class="thead-dark">
         <tr>
             <th scope="col">제목</th>
             <th scope="col">작성일</th>
+<!--            <th scope="col">작성자</th>-->
+<!--            <th scope="col">조회수</th>-->
         </tr>
         </thead>
         <tbody id="tbody">
         {{#posts}}
             <tr>
-                <td><a href="/community/{{postId}}">{{title}}</a></td>
+                <td><a href="/community/post/{{postId}}">{{title}}</a></td>
+<!--                <td>{writer}}</td>-->
                 <td>{{createdAt}}</td>
+<!---->
             </tr>
         {{/posts}}
         </tbody>
     </table>
+        <div class="text-right">
+            <a href="/community/postsave" role ="button" class="btn btn-primary bi bi-pencil-fill">글쓰기</a>
+        </div>
+    </div>
 </div>
 
 {{>layout/footer}}

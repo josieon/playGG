@@ -1,11 +1,57 @@
 package com.playGG.play.ggprojectboard.web;
+//package com.playGG.play.ggprojectboard.web;
+//
+//import com.playGG.play.ggprojectboard.service.BoardPostService;
+//import com.playGG.play.ggprojectboard.web.dto.*;
+//import lombok.RequiredArgsConstructor;
+//import org.springframework.web.bind.annotation.*;
+//
+//
+//@RequiredArgsConstructor
+//@RestController //rest 방식
+//public class BoardPostApiController {
+//
+//    private final BoardPostService boardPostService;
+//
+//    //저장
+////    @PostMapping("/api/v1/board-post")
+////    public Long save(@RequestBody BoardPostRequestDto dto, UsersResponseDto users) { //@RequestBody는 클라이언트에서 보낸 JSON 혹은 XML을 자바객체로 변환
+////        return boardPostService.save(dto, users.getNickname());
+////    }
+//
+//    @PostMapping("/api/v1/board-post")
+//    public Long save(@RequestBody BoardPostRequestDto dto) { //@RequestBody는 클라이언트에서 보낸 JSON 혹은 XML을 자바객체로 변환
+//        return boardPostService.save(dto);
+//    }
+//
+//    //수정
+//    @PutMapping("/api/v1/board-post/{postId}") // HTTP PUT 요청 처리 엔드포인트, @PathVariable 어노테이션으로 {postId}값을 추출
+//    public Long update(@PathVariable Long postId, @RequestBody BoardPostRequestDto requestDto){
+//        return boardPostService.update(postId, requestDto);
+//    }
+//
+//    //조회
+//    @GetMapping("/api/v1/board-post/{postId}")
+//    public BoardPostsResponseDto findPostById(@PathVariable Long postId){
+//        return boardPostService.findPostById(postId);
+//    }
+//
+//    //삭제
+//    @DeleteMapping("/api/v1/board-post/{postId}")
+//    public Long delete(@PathVariable Long postId){
+//        boardPostService.delete(postId);
+//        return postId;
+//    }
+//
+//}
+//
 
 import com.playGG.play.ggprojectboard.service.BoardPostService;
 import com.playGG.play.ggprojectboard.web.dto.BoardPostResponseDto;
 import com.playGG.play.ggprojectboard.web.dto.BoardPostSaveRequestDto;
+import com.playGG.play.ggprojectboard.web.dto.BoardPostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 
 @RequiredArgsConstructor
 @RestController //rest 방식
@@ -27,7 +73,7 @@ public class BoardPostApiController {
 
     //조회
     @GetMapping("/api/v1/board-post/{postId}")
-    public BoardPostResponseDto findPostById(@PathVariable Long postId){
+    public BoardPostsResponseDto findPostById(@PathVariable Long postId){
         return boardPostService.findPostById(postId);
     }
 
@@ -39,4 +85,3 @@ public class BoardPostApiController {
     }
 
 }
-

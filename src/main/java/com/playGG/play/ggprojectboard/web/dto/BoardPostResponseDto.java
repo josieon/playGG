@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
@@ -20,7 +22,11 @@ public class BoardPostResponseDto {
     private Integer shareCount; //공유버튼 클릭수 카운트
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private String videoUrl;
+//    private String videoUrl;
+
+    private String writer;
+    private Long userId;
+    private List<CommentsDto.Response> comments; // 코멘트
 
 
 
@@ -35,6 +41,10 @@ public class BoardPostResponseDto {
         this.shareCount = responseEntity.getShareCount();
         this.createdAt = responseEntity.getCreatedAt();
         this.updatedAt = responseEntity.getUpdatedAt();
-        this.videoUrl = responseEntity.getVideoUrl();
+//        this.videoUrl = responseEntity.getVideoUrl();
+        this.writer = responseEntity.getWriter();
+//        this.userId = responseEntity.getUsers().getUserId();
+        this.comments = responseEntity.getComments().stream() //댓글 리스트
+                .map(CommentsDto.Response::new).collect(Collectors.toList());
     }
 }

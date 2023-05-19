@@ -16,12 +16,12 @@ public class BoardPostSaveRequestDto { //HTTP Request Body로 보내는 값(JSON
     private Integer dislike; // 싫어요수
     private String contents; // 게시글 내용
     private Integer shareCount; //공유버튼 클릭수 카운트
-    private String videoUrl;
+//    private String videoUrl;
 
     @Builder
     public BoardPostSaveRequestDto(String title, Integer viewCount,
                      Integer commentCount, Integer likes, Integer dislike, String contents,
-                     Integer shareCount, String videoUrl) {
+                     Integer shareCount) {
         this.title = title;
         this.viewCount = viewCount;
         this.commentCount = commentCount;
@@ -29,7 +29,6 @@ public class BoardPostSaveRequestDto { //HTTP Request Body로 보내는 값(JSON
         this.dislike = dislike;
         this.contents = contents;
         this.shareCount = shareCount;
-        this.videoUrl = videoUrl;
     }
 
     public BoardPost toEntity() {     //BoardPostSaveRequestDto 객체를 BoardPost 엔티티로 변환
@@ -41,7 +40,6 @@ public class BoardPostSaveRequestDto { //HTTP Request Body로 보내는 값(JSON
                 .dislike(dislike==null?0:dislike)
                 .contents(contents)
                 .shareCount(shareCount==null?0:shareCount)
-                .videoUrl(videoUrl)
                 .build(); //.build() 메서드를 호출하여 BoardPost 객체를 최종적으로 생성
     }
 }

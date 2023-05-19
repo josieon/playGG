@@ -67,7 +67,6 @@ class BoardPostApiControllerTest {
                 .dislike(dislike)
                 .contents(contents)
                 .shareCount(shareCount)
-                .videoUrl(videoUrl)
                 .build();
 
         String url = "http://localhost:" + port + "/api/v1/board-post";
@@ -88,7 +87,6 @@ class BoardPostApiControllerTest {
         assertThat(all.get(0).getDislike()).isEqualTo(dislike);
         assertThat(all.get(0).getContents()).isEqualTo(contents);
         assertThat(all.get(0).getShareCount()).isEqualTo(shareCount);
-        assertThat(all.get(0).getVideoUrl()).isEqualTo(videoUrl);
     }
 
     @Test
@@ -103,7 +101,6 @@ class BoardPostApiControllerTest {
                         .dislike(0)
                         .contents("contents")
                         .shareCount(0)
-                        .videoUrl("videoUrl")
                         .build()
         );
 
@@ -115,7 +112,6 @@ class BoardPostApiControllerTest {
         BoardPostUpdateRequestDto requestDto = BoardPostUpdateRequestDto.builder() //updateDto
                 .title(expectedTitle)
                 .contents(expectedContents)
-                .videoUrl(expectedVideoUrl)
                 .build();
 
         String url = "http://localhost:" + port + "/api/v1/board-post/" + updatePostId;
@@ -136,7 +132,6 @@ class BoardPostApiControllerTest {
         List<BoardPost> all = boardPostRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContents()).isEqualTo(expectedContents);
-        assertThat(all.get(0).getVideoUrl()).isEqualTo(expectedVideoUrl);
     }
 
 }

@@ -16,7 +16,8 @@ public class OauthAttributes {
     private String nameAttributeKey; //사용자 이름
     private String name; // 사용자 이름
     private String email; // 사용자 이메일
-    private String picture; // 프로필 사진
+//    private String picture; // 프로필 사진
+    private String nickname;
 
 
     public static OauthAttributes of(String registration,
@@ -28,9 +29,9 @@ public class OauthAttributes {
     private static OauthAttributes ofGoogle(String userNameAttributeName,
                                             Map<String, Object> attributes){
         return OauthAttributes.builder()
-                .name((String) attributes.get("name"))
+                .name((String) attributes.get("email"))
                 .email((String) attributes.get("email"))
-                .picture((String) attributes.get("picture"))
+                .nickname((String) attributes.get("name"))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
@@ -38,9 +39,9 @@ public class OauthAttributes {
 
     public Users toEntity(){
         return Users.builder()
-                .name(name)
+                .name(email)
                 .email(email)
-                .picture(picture)
+                .nickname(nickname)
                 .role(Role.GUEST)
                 .build();
     }

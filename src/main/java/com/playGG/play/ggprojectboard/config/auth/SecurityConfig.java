@@ -5,16 +5,35 @@ import com.playGG.play.ggprojectboard.domain.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @RequiredArgsConstructor
 @EnableWebSecurity // Spring Security를 설정들을 활성화시켜줌
 @Configuration // Spring 설정 클래스 표시
+
 // Spring Security를 설정 클래스
 public class SecurityConfig {
     private final CustomOauth2UserService customOauth2UserService;
+//    private final AuthenticationFailureHandler customFailureHandler;
+//    private final CustomUserDetailsService customUserDetailsService;
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+    @Bean
+    public BCryptPasswordEncoder Encoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -32,10 +51,13 @@ public class SecurityConfig {
                     // URL 및 HTTP 메소드 별로 관리가 가능
                     // "/" 등 지정된 URL들은 permitAll() 옵션을 통해 전체 열람 권한을 줄 수 있음
                     // 권한 관리 대상을 URL로 지정, 아래 패턴의 URL에 대해서 전체 접근하는 사용자에 대해 모두 허가
-                    .requestMatchers("/community", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
-                    .requestMatchers("/login").permitAll()
-                    // USER라고 하는 권한 가진 사람만 "/api/v1/**" 하위 URL에 대해서 허가
-                    .requestMatchers("/api/v1/**").hasRole(Role.USER.name())
+//                    .requestMatchers("/community", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
+//                    .requestMatchers("/login").permitAll()
+//
+//                    // USER라고 하는 권한 가진 사람만 "/api/v1/**" 하위 URL에 대해서 허가
+//                    .requestMatchers("/api/v1/**").hasRole(Role.USER.name())
+
+                    .requestMatchers("/**").permitAll()
                     // 설정된 값들 이외 나머지 URL들을 나타낸다.
                     .anyRequest().authenticated()
                     .and()

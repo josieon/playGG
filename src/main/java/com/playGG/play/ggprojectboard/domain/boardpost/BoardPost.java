@@ -54,10 +54,13 @@ public class BoardPost extends AuditingEntity { //AuditingEntity을 통한 일�
     @ColumnDefault("0")
     private Integer shareCount; //공유버튼 클릭수 카운트
 
-    @Column(columnDefinition = "TEXT") //NULL 허용
-    private String videoUrl; // 동영상 URL
+//    @Column(columnDefinition = "TEXT") //NULL 허용
+//    private String videoUrl; // 동영상 URL
 
-    @ManyToOne
+    @Column
+    private String writer;  // 작성자
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id") // ForeignKey 추가
     private Users users; //회원
 
@@ -65,20 +68,17 @@ public class BoardPost extends AuditingEntity { //AuditingEntity을 통한 일�
     @JoinColumn(name = "category_id") // ForeignKey 추가
     private Category category; //카테고리
 
-    @OneToMany(mappedBy = "boardPostImages") //일대다 관계, 객체 맵핑
+    @OneToMany(mappedBy = "boardPostImages", fetch = FetchType.LAZY) //일대다 관계, 객체 맵핑
     private List<Images> images = new ArrayList<Images>(); //게시글 이미지
 
-    @OneToMany(mappedBy = "boardPost") //일대다 관계, 객체 맵핑
-    private List<Comments> commentList = new ArrayList<Comments>(); //댓글 리스트
-
+    @OneToMany(mappedBy = "boardPost", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)  //일대다 관계, cascade = CascadeType.REMOVE 포스트와 함께 제거
+    private List<Comments> comments = new ArrayList<Comments>(); //댓글 리스트
 
     @Builder
-    public BoardPost(Long postId, String title, Integer viewCount,
-                     Integer commentCount, Integer likes, Integer dislike,
-                     String contents, Integer shareCount, String videoUrl,
-                     Users users, Category category, List<Images> images,
-                     List<Comments> commentList) {
-        this.postId = postId;
+    public BoardPost(String title, Integer viewCount, Integer commentCount,
+                     Integer likes, Integer dislike, String contents, Integer shareCount,
+                     String writer, Users users, Category category,
+                     List<Images> images, List<Comments> comments) {
         this.title = title;
         this.viewCount = viewCount;
         this.commentCount = commentCount;
@@ -86,17 +86,15 @@ public class BoardPost extends AuditingEntity { //AuditingEntity을 통한 일�
         this.dislike = dislike;
         this.contents = contents;
         this.shareCount = shareCount;
-        this.videoUrl = videoUrl;
+        this.writer = writer;
         this.users = users;
         this.category = category;
         this.images = images;
-        this.commentList = commentList;
+        this.comments = comments;
     }
-
-
-    public void update(String title, String contents, String videoUrl) {
+    // 게시글 수정
+    public void update(String title, String contents) {
         this.title = title;
         this.contents = contents;
-        this.videoUrl = videoUrl;
     }
 }

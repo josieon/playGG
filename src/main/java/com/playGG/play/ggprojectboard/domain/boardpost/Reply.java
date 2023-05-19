@@ -13,18 +13,18 @@ public class Reply extends AuditingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyId;
 
-    @Column(nullable = false, length = 500)
+    @Column(nullable = false, columnDefinition = "LONGTEXT")
     private String contents;
 
-    @Column(nullable = false, columnDefinition = "integer default 0")
+    @Column(columnDefinition = "integer default 0")
     private Integer likes; // 좋아요수
 
-    @Column(nullable = false, columnDefinition = "integer default 0")
+    @Column(columnDefinition = "integer default 0")
     private Integer dislike; // 싫어요수
 
     @ManyToOne
     @JoinColumn(name="user_id")
-    private Users users;
+    private Users users; //작성자
 
     @OneToOne
     @JoinColumn(name="image_id")
@@ -34,7 +34,6 @@ public class Reply extends AuditingEntity {
     private Comments comments;
 
     @Builder
-
     public Reply(String contents, Integer likes,
                  Integer dislike, Users users,
                  Images imageReply, Comments comments) {

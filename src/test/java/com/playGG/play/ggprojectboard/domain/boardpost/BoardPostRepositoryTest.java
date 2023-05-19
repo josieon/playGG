@@ -55,7 +55,6 @@ class BoardPostRepositoryTest {
                 .dislike(dislike)
                 .contents(contents)
                 .shareCount(shareCount)
-                .videoUrl(videoUrl)
                 .build()
         );
 
@@ -70,7 +69,6 @@ class BoardPostRepositoryTest {
         assertEquals(boardPost.getDislike(), dislike);
         assertEquals(boardPost.getContents(), contents);
         assertEquals(boardPost.getShareCount(), shareCount);
-        assertEquals(boardPost.getVideoUrl(), videoUrl);
     }
 
     @Test //auditing 테스트
@@ -88,7 +86,6 @@ class BoardPostRepositoryTest {
                 .dislike(0)
                 .contents("contents")
                 .shareCount(0)
-                .videoUrl("videoUrl")
                 .build()
         );
 

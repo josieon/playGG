@@ -19,7 +19,7 @@ public class Images extends AuditingEntity {
     @JoinColumn(name = "post_id")
     private BoardPost boardPostImages; //카테고리
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "LONGTEXT")
     private String image_Url;
 
     @OneToOne(mappedBy = "imageComment")
