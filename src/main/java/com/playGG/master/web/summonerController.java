@@ -73,18 +73,115 @@ public class summonerController {
 
         LeagueEntryDTO[] InGameLeague = null;
         List<LeagueEntryDTO[]> InGameLeaues = null;
+
+
+        long inGameChampId = 0;
+        List<Long> inGameChampIds = new ArrayList<>();
+
+        String inGameSumName = null;
+        List<String> inGameSumNames = new ArrayList<>();
+
+        long inGameSpell1 = 0;
+        List<Long> inGameSpell1s = new ArrayList<>();
+        long inGameSpell2 = 0;
+        List<Long> inGameSpell2s = new ArrayList<>();
+
+
+        long gameQueueConfigId = 0;
+        long inGameTime = 0;
+
+        String championImgURL = null;
+
+        List<String> championImgURLs = new ArrayList<>();
+        List<String> inGameSpell1URLs = new ArrayList<>();
+        List<String> inGameSpell2URLs = new ArrayList<>();
+
+
         //인게임 정보
         try {
             inGame = riotApiService.getInGame(summoner);
-            // InGame 정보를 이용한 로직 구현
-            for (int i =0; i<10; i++) {
-                //게임 참가자들의 리그 정보;
-                InGameLeague =  riotApiService.getLeague(riotApiService.getSummoner(inGame.getParticipants().get(i).getSummonerName()));
-                int soloRankIndex = InGameLeague.length;
-                currentGameParticipant.setTier(InGameLeague[soloRankIndex].getTier());
-                currentGameParticipant.setRank(InGameLeague[soloRankIndex].getRank());
+
+            gameQueueConfigId = inGame.getGameQueueConfigId();
+            inGameTime = inGame.getGameLength();
+
+            //인게임 모드 구하기
+            String inGameMode;
+            if (gameQueueConfigId == 420) {
+                inGameMode = "솔로랭크";
+            } else if (gameQueueConfigId == 430) {
+                inGameMode = "일반";
+            } else if (gameQueueConfigId == 440) {
+                inGameMode = "자유랭크";
+            } else if (gameQueueConfigId == 450) {
+                inGameMode = "무작위 총력전";
+            } else {
+                // 매핑되는 값이 없는 경우에 대한 처s리
+                inGameMode = "알 수 없음";
             }
-            modelAndView.addObject("inGame", inGame);
+
+            modelAndView.addObject("inGameMode", inGameMode);
+
+            for(int i =0; i<10; i++){
+                inGameChampIds.add(inGame.getParticipants().get(i).getChampionId());
+                inGameSumNames.add(inGame.getParticipants().get(i).getSummonerName());
+                inGameSpell1s.add(inGame.getParticipants().get(i).getSpell1Id());
+                inGameSpell2s.add(inGame.getParticipants().get(i).getSpell2Id());
+            }
+            ChampionIdMapper championIdMapper = new ChampionIdMapper();
+            InGameRuneMapper inGameRuneMapper = new InGameRuneMapper();
+            //챔피언 아이디, 룬, 스펠을 스트링으로 맵핑
+            for(int i =0; i < 10; i++) {
+                championImgURLs.add(championIdMapper.getChampImgURL(inGameChampIds.get(i)));
+                inGameSpell1URLs.add(inGameRuneMapper.getInGameSpellCode(inGameSpell1s.get(i)));
+                inGameSpell2URLs.add(inGameRuneMapper.getInGameSpellCode(inGameSpell2s.get(i)));
+            }
+
+            modelAndView.addObject("yesCurrentGame", "");
+            modelAndView.addObject("inChamp1", championImgURLs.get(0));
+            modelAndView.addObject("inChamp2", championImgURLs.get(1));
+            modelAndView.addObject("inChamp3", championImgURLs.get(2));
+            modelAndView.addObject("inChamp4", championImgURLs.get(3));
+            modelAndView.addObject("inChamp5", championImgURLs.get(4));
+            modelAndView.addObject("inChamp6", championImgURLs.get(5));
+            modelAndView.addObject("inChamp7", championImgURLs.get(6));
+            modelAndView.addObject("inChamp8", championImgURLs.get(7));
+            modelAndView.addObject("inChamp9", championImgURLs.get(8));
+            modelAndView.addObject("inChamp10", championImgURLs.get(9));
+
+            modelAndView.addObject("inSum1", inGameSumNames.get(0));
+            modelAndView.addObject("inSum2", inGameSumNames.get(1));
+            modelAndView.addObject("inSum3", inGameSumNames.get(2));
+            modelAndView.addObject("inSum4", inGameSumNames.get(3));
+            modelAndView.addObject("inSum5", inGameSumNames.get(4));
+            modelAndView.addObject("inSum6", inGameSumNames.get(5));
+            modelAndView.addObject("inSum7", inGameSumNames.get(6));
+            modelAndView.addObject("inSum8", inGameSumNames.get(7));
+            modelAndView.addObject("inSum9", inGameSumNames.get(8));
+            modelAndView.addObject("inSum10", inGameSumNames.get(9));
+
+            modelAndView.addObject("inGameFirstSpell1", inGameSpell1URLs.get(0));
+            modelAndView.addObject("inGameFirstSpell2", inGameSpell1URLs.get(1));
+            modelAndView.addObject("inGameFirstSpell3", inGameSpell1URLs.get(2));
+            modelAndView.addObject("inGameFirstSpell4", inGameSpell1URLs.get(3));
+            modelAndView.addObject("inGameFirstSpell5", inGameSpell1URLs.get(4));
+            modelAndView.addObject("inGameFirstSpell6", inGameSpell1URLs.get(5));
+            modelAndView.addObject("inGameFirstSpell7", inGameSpell1URLs.get(6));
+            modelAndView.addObject("inGameFirstSpell8", inGameSpell1URLs.get(7));
+            modelAndView.addObject("inGameFirstSpell9", inGameSpell1URLs.get(8));
+            modelAndView.addObject("inGameFirstSpell10", inGameSpell1URLs.get(9));
+
+            modelAndView.addObject("inGameSecondSpell1", inGameSpell2URLs.get(0));
+            modelAndView.addObject("inGameSecondSpell2", inGameSpell2URLs.get(1));
+            modelAndView.addObject("inGameSecondSpell3", inGameSpell2URLs.get(2));
+            modelAndView.addObject("inGameSecondSpell4", inGameSpell2URLs.get(3));
+            modelAndView.addObject("inGameSecondSpell5", inGameSpell2URLs.get(4));
+            modelAndView.addObject("inGameSecondSpell6", inGameSpell2URLs.get(5));
+            modelAndView.addObject("inGameSecondSpell7", inGameSpell2URLs.get(6));
+            modelAndView.addObject("inGameSecondSpell8", inGameSpell2URLs.get(7));
+            modelAndView.addObject("inGameSecondSpell9", inGameSpell2URLs.get(8));
+            modelAndView.addObject("inGameSecondSpell10", inGameSpell2URLs.get(9));
+
+
         } catch(HttpClientErrorException ex){
             if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
                 errorMessage = "'" + summoner.getName() + "'" + "님은 현재 게임중이 아닙니다.";
@@ -103,11 +200,10 @@ public class summonerController {
                 int timeMinutes = (int) (timeSeocnds / 60);
                 timeSeocnds %= 60;
 
-                currentGameTime += "게임 시간 : " + timeMinutes + "분 " + timeSeocnds + "초";
-            } else {
-                currentGameTime += errorMessage;
+                currentGameTime = timeMinutes + "분 " + timeSeocnds + "초";
             }
-        }catch (RuntimeException e) {
+            modelAndView.addObject("currentGameTime", currentGameTime);
+        } catch (RuntimeException e) {
         }
 
         //리그
@@ -335,7 +431,7 @@ public class summonerController {
 
                 //매치 참가자 목록
                 for (int k = 0; k < 10; k++) {
-                    String position = matches.get(i).getInfo().getParticipants().get(k).getIndividualPosition();
+                    String position = matches.get(i).getInfo().getParticipants().get(k).getTeamPosition();
                     int teamId = matches.get(i).getInfo().getParticipants().get(k).getTeamId();
 
                     if (teamId == 100 && (position.equals("TOP"))) {

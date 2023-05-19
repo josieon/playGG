@@ -15,9 +15,6 @@ public class RiotApiService {
     @Value("${apiKey}")
     private String API_KEY;
 
-//    @Value("${apiKey2}")
-//    private String API_KEY2;
-
     //다른서버에 요청을 해주는 역할을 가진 객체
     RestTemplate restTemplate = new RestTemplate();
 
