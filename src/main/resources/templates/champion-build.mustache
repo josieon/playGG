@@ -5,16 +5,10 @@
         <div class="col-md-4">
             <form action="/api/v1/posts" method="post">
                 {{#champion}}
-                    <div class="form-group">
+                    <div class="info">
                         <label for="title">챔피언 {{statistic.championName}}</label>
-                    </div>
-                    <div>
                         <label for="title">승률 : {{winRate}}%</label>
-                    </div>
-                    <div class="form-group">
                         <label for="author">픽률 : {{pickRate}}%</label>
-                    </div>
-                    <div class="form-group">
                         <label for="content">밴률 : {{banRate}}%</label>
                     </div>
                     <div class="form-group">
@@ -43,18 +37,56 @@
                     </div>
                     <div class="form-group">
                         <table class = "counter">
-                            <th>상대하기 어려운 챔피언</th>
-                            <th>상대하기 쉬운 챔피언</th>
+                            <p>상대하기 어려운 챔피언</p>
+                            {{#counters_hard}}
+                                <tr>
+                                    <td>{{championId}}</td>
+                                    <td>{{winRate}}%</td>
+                                </tr>
+                            {{/counters_hard}}
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <table class = "counter">
+                            <p>상대하기 쉬운 챔피언</p>
+                            {{#counters_easy}}
+                                <tr>
+                                    <td>{{championId}}</td>
+                                    <td>{{winRate}}%</td>
+                                </tr>
+                            {{/counters_easy}}
                         </table>
                     </div>
                     <div class="form-group">
                         <table class = "spell">
                             <th>소환사 주문</th>
+                            <th>픽률</th>
+                            <th>승률</th>
+                            {{#spells}}
+                                <tr>
+                                    <td>
+                                        {{#spell}}
+                                            {{id}}
+                                        {{/spell}}
+                                    </td>
+                                    <td>{{pickRate}}%&nbsp;{{picCount}}게임</td>
+                                    <td>{{winRate}}%</td>
+                                </tr>
+                            {{/spells}}
                         </table>
                     </div>
                     <div class = "form-group">
                         <table class = "item">
                             <th>아이템</th>
+                            <th>픽률</th>
+                            <th>승률</th>
+                            {{#items}}
+                                <tr>
+                                    <td>{{itemId}}</td>
+                                    <td>{{pickRate}}%</td>
+                                    <td>{{winRate}}%</td>
+                                </tr>
+                            {{/items}}
                         </table>
                     </div>
                 {{/champion}}
