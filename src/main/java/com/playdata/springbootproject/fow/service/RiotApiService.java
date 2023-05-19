@@ -17,8 +17,8 @@ public class RiotApiService {
     @Value("${apiKey}")
     private String API_KEY;
 
-    @Value("${apiKey2}")
-    private String API_KEY2;
+    @Value("${apiKey3}")
+    private String API_KEY3;
 
     //다른서버에 요청을 해주는 역할을 가진 객체
     RestTemplate restTemplate = new RestTemplate();
@@ -65,7 +65,6 @@ public class RiotApiService {
         ResponseEntity<MatchDto> respMatch = restTemplate.getForEntity(
                 "https://asia.api.riotgames.com/lol/match/v5/matches/" + match + "?api_key=" + API_KEY,
                 MatchDto.class);
-        System.out.println(respMatch.getBody());
         return respMatch.getBody();
     }
 
