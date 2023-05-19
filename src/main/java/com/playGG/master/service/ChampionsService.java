@@ -14,6 +14,9 @@ import java.util.stream.*;
 public class ChampionsService {
     private final ChampionsRepository championsRepository;
     private final PerksRepository perksRepository;
+    private final SpellsRepository spellsRepository;
+    private final CounterRepository counterRepository;
+    private final ItemRepository itemRepository;
 
     @Transactional(readOnly = true)
     public List<ChampsListResponseDto> findAll() {
@@ -29,6 +32,7 @@ public class ChampionsService {
     public ChampionResponseDto findById(Integer championId) {
         champion_statistic c = championsRepository.findById(championId).get();
         int gameCount = championsRepository.findAll().stream().map(e -> e.getChoices()).reduce(0, (a, b) -> a + b) / 10;
+        List<counter_statistic> counters = counterRepository.findAllById(championId);
         ChampionResponseDto res = ChampionResponseDto.builder()
                 .statistic(c)
                 .winRate((float)Math.round(10000 * c.getWins() / c.getChoices()) / 100)
@@ -43,6 +47,52 @@ public class ChampionsService {
 //                                    .perks(e.getPerks())
 //                                    .build();
 //                        )
+                        .collect(Collectors.toList()))
+                .spells(spellsRepository.findAllBy(championId).stream()
+                        .map(e -> Spells.builder()
+                                .picCount(e.getChoices())
+                                .winRate((float) Math.round(10000 * e.getWins() / e.getChoices()) / 100)
+                                .pickRate((float) Math.round(10000 * e.getChoices() / c.getChoices()) / 100)
+                                .build())
+                        .collect(Collectors.toList()))
+                .counters_easy(counters.stream()
+                        .sorted(new Comparator<counter_statistic>() {
+                            @Override
+                            public int compare(counter_statistic o1, counter_statistic o2) {
+                                return (float)o1.getWins()/o1.getChoices() > (float)o2.getWins()/o2.getChoices() ? -1 : 1;
+                            }
+                        })
+                        .limit(5)
+                        .map(e -> CounterDto.builder()
+                                .championId(e.getCounterPK().getCounterId())
+                                .winRate((float)Math.round(10000*e.getWins()/e.getChoices())/100)
+                                .build())
+                        .collect(Collectors.toList()))
+                .counters_hard(counters.stream()
+                        .sorted(new Comparator<counter_statistic>() {
+                            @Override
+                            public int compare(counter_statistic o1, counter_statistic o2) {
+                                return (float)o1.getWins()/o1.getChoices() < (float)o2.getWins()/o2.getChoices() ? -1 : 1;
+                            }
+                        })
+                        .limit(5)
+                        .map(e -> CounterDto.builder()
+                                .championId(e.getCounterPK().getCounterId())
+                                .winRate((float)Math.round(10000*e.getWins()/e.getChoices())/100)
+                                .build())
+                        .collect(Collectors.toList()))
+                .items(itemRepository.findAllById(championId).stream()
+                        .sorted(new Comparator<item_statistic>() {
+                            @Override
+                            public int compare(item_statistic o1, item_statistic o2) {
+                                return (float)o1.getWins()/o1.getChoices() > (float)o2.getWins()/o2.getChoices() ? -1 : 1;
+                            }
+                        })
+                        .map(e -> Items.builder()
+                                .itemId(e.getItemPK().getItemId())
+                                .pickRate((float)Math.round(10000 * e.getChoices() / c.getChoices()) / 100)
+                                .winRate((float)Math.round(10000 * e.getWins() / e.getChoices()) / 100)
+                                .build())
                         .collect(Collectors.toList()))
                 .build();
 //        List<perk_statistic> p = perksRepository.findAllById(championId);

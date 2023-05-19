@@ -27,8 +27,8 @@ public class ChampsListResponseDto {
         this.wins = champ.getWins();
         this.choices = champ.getChoices();
         this.bans = champ.getBans();
-        this.winRate = (float)wins/choices*100;
-        this.pickRate = pickRate*100;
-        this.banRate = banRate*100;
+        this.winRate = (float)Math.round(10000 * wins/choices)/100;
+        this.pickRate = (float)Math.round(10000*pickRate)/100;
+        this.banRate = (float)Math.round(10000*banRate)/100;
     }
 }
