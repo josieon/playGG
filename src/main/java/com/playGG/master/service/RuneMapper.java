@@ -62,8 +62,12 @@ public class RuneMapper {
     public String getSpellCode(int summonerId) {
         return runeMap.get(summonerId);
     }
+    public String getInGameRuneCode(long runeId) {
+        return runeMap.get(runeId);
+    }
 
-
-
+    public String getInGameSpellCode(long summonerId) {
+        return runeMap.get(summonerId);
+    }
 
 }
