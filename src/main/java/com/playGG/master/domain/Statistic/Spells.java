@@ -8,7 +8,7 @@ import java.util.*;
 @Setter
 @Builder
 public class Spells {
-    List<Spell> spell;
+    List<String> spell;
     float pickRate;
     float winRate;
     int picCount;

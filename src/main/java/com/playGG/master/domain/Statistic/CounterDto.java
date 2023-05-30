@@ -7,5 +7,6 @@ import lombok.*;
 @Builder
 public class CounterDto {
     int championId;
+    String imageURL;
     float winRate;
 }
