@@ -4,5 +4,5 @@ import lombok.*;
 
 @AllArgsConstructor
 public class Spell {
-    int id;
+    String name;
 }

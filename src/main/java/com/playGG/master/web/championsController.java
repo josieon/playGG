@@ -20,7 +20,7 @@ public class championsController {
         return "champions";
     }
 
-    @GetMapping("champions/{championId}")
+    @GetMapping("/champions/{championId}")
     public String championBuild(Model model, @PathVariable Integer championId) {
         model.addAttribute("champion", championsService.findById(championId));
         return "champion-build";

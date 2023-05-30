@@ -42,7 +42,7 @@
                             <p>상대하기 어려운 챔피언</p>
                             {{#counters_hard}}
                                 <tr>
-                                    <td>{{championId}}</td>
+                                    <td><img src="{{imageURL}}" width="40" height="40"></td>
                                     <td>{{winRate}}%</td>
                                 </tr>
                             {{/counters_hard}}
@@ -53,7 +53,7 @@
                             <p>상대하기 쉬운 챔피언</p>
                             {{#counters_easy}}
                                 <tr>
-                                    <td>{{championId}}</td>
+                                    <td><img src="{{imageURL}}" width="40" height="40"></td>
                                     <td>{{winRate}}%</td>
                                 </tr>
                             {{/counters_easy}}
@@ -68,7 +68,7 @@
                                 <tr>
                                     <td>
                                         {{#spell}}
-                                            {{id}}
+                                            <img src="https://opgg-static.akamaized.net/meta/images/lol/spell/{{.}}.png?" width="40" height="40">
                                         {{/spell}}
                                     </td>
                                     <td>{{pickRate}}%&nbsp;{{picCount}}게임</td>
@@ -84,7 +84,7 @@
                             <th>승률</th>
                             {{#items}}
                                 <tr>
-                                    <td>{{itemId}}</td>
+                                    <td><img src="https://opgg-static.akamaized.net/meta/images/lol/item/{{itemId}}.png?" width="40" height="40"></td>
                                     <td>{{pickRate}}%</td>
                                     <td>{{winRate}}%</td>
                                 </tr>

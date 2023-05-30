@@ -9,6 +9,7 @@ import java.io.*;
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class CounterPK implements Serializable {
     private int championId;
     private int counterId;

@@ -17,6 +17,7 @@ public class ChampionsService {
     private final SpellsRepository spellsRepository;
     private final CounterRepository counterRepository;
     private final ItemRepository itemRepository;
+    private final RuneMapper runeMapper = new RuneMapper();
     private final ChampionIdMapper championIdMapper = new ChampionIdMapper();
 
     @Transactional(readOnly = true)
@@ -24,7 +25,27 @@ public class ChampionsService {
         List<champion_statistic> list = championsRepository.findAll();
         int gameCount = list.stream().map(e -> e.getChoices()).reduce(0, (a, b) -> a+b) / 10;
         return list.stream()
-                .map(e -> new ChampsListResponseDto(e, (float)e.getChoices() / gameCount, (float)e.getBans() / gameCount))
+                .map(e -> ChampsListResponseDto.builder()
+                        .championName(e.getChampionName())
+                        .championId(e.getChampionId())
+                        .wins(e.getWins())
+                        .choices(e.getChoices())
+                        .bans(e.getBans())
+                        .winRate((float)Math.round(10000 * e.getWins()/e.getChoices())/100)
+                        .pickRate((float)Math.round(10000*e.getChoices()/gameCount)/100)
+                        .banRate((float)Math.round(10000*e.getBans()/gameCount)/100)
+                        .imageURL(championIdMapper.getChampImgURL(e.getChampionId()))
+                        .counters(counterRepository.findAllById(e.getChampionId()).stream()
+                                .sorted(new Comparator<counter_statistic>() {
+                                    @Override
+                                    public int compare(counter_statistic o1, counter_statistic o2) {
+                                        return (float)o1.getWins()/o1.getChoices() < (float)o2.getWins()/o2.getChoices() ? -1 : 1;
+                                    }
+                                })
+                                .limit(5)
+                                .map(c -> championIdMapper.getChampImgURL(c.getCounterPK().getCounterId()))
+                                .collect(Collectors.toList()))
+                        .build())
 //                .forEach(e -> e.setBanRate((float)e.getBans() / gameCount))
                 .sorted(Comparator.comparing(ChampsListResponseDto::getWinRate).reversed())
                 .collect(Collectors.toList());
@@ -59,6 +80,8 @@ public class ChampionsService {
                         .collect(Collectors.toList()))
                 .spells(spellsRepository.findAllBy(championId).stream()
                         .map(e -> Spells.builder()
+                                .spell(Arrays.stream(new String[] {runeMapper.getSpellCode(e.getSpellPK().getSummoner1()), runeMapper.getSpellCode(e.getSpellPK().getSummoner2())})
+                                        .collect(Collectors.toList()))
                                 .picCount(e.getChoices())
                                 .winRate((float) Math.round(10000 * e.getWins() / e.getChoices()) / 100)
                                 .pickRate((float) Math.round(10000 * e.getChoices() / c.getChoices()) / 100)
@@ -75,6 +98,7 @@ public class ChampionsService {
                         .map(e -> CounterDto.builder()
                                 .championId(e.getCounterPK().getCounterId())
                                 .winRate((float)Math.round(10000*e.getWins()/e.getChoices())/100)
+                                .imageURL(championIdMapper.getChampImgURL(e.getCounterPK().getCounterId()))
                                 .build())
                         .collect(Collectors.toList()))
                 .counters_hard(counters.stream()
@@ -88,6 +112,7 @@ public class ChampionsService {
                         .map(e -> CounterDto.builder()
                                 .championId(e.getCounterPK().getCounterId())
                                 .winRate((float)Math.round(10000*e.getWins()/e.getChoices())/100)
+                                .imageURL(championIdMapper.getChampImgURL(e.getCounterPK().getCounterId()))
                                 .build())
                         .collect(Collectors.toList()))
                 .items(itemRepository.findAllById(championId).stream()
