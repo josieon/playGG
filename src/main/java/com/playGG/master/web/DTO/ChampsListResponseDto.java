@@ -2,7 +2,12 @@ package com.playGG.master.web.DTO;
 import com.playGG.master.domain.Statistic.*;
 import lombok.*;
 
+import java.util.*;
+
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ChampsListResponseDto {
     private Integer championId;
     private String championName;
@@ -12,6 +17,8 @@ public class ChampsListResponseDto {
     private Float winRate;
     private Float pickRate;
     private Float banRate;
+    private String imageURL;
+    private List<String> counters;
 
     public void setPickRate(Float pickRate) {
         this.pickRate = pickRate;
